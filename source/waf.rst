@@ -4,7 +4,7 @@
 Introduction to Waf
 *******************
 
-`Waf <https://code.google.com/p/waf/>`_ is our tool of choice to automate the dependency tracking via a DAG (directed acyclic graph) structure. Written in Python and originally designed to build software, it directly extends to our purposes. You find the program in the root folder of the project template (the file *waf.py* and the hidden folder *.mywaflib*). The settings for a particular project are controlled via files called *wscript*, which are kept in the root directory (required) and usually in the directories close to the tasks that need to be performed.
+`Waf <https://waf.io>`_ is our tool of choice to automate the dependency tracking via a DAG (directed acyclic graph) structure. Written in Python and originally designed to build software, it directly extends to our purposes. You find the program in the root folder of the project template (the file *waf.py* and the hidden folder *.mywaflib*). The settings for a particular project are controlled via files called *wscript*, which are kept in the root directory (required) and usually in the directories close to the tasks that need to be performed.
 
 There are three phases to building a project:
 
@@ -275,4 +275,4 @@ To conclude, Waf roughly works in the following way:
       * Minimal rebuilds are a huge speed gain compared to a *master-script*.
       * These gains are large enought to make projects break or succeed.
 
-We have just touched upon the tip of the iceberg here; Waf has many more goodies to offer. The Waf book :cite:`Nagy13` is an excellent source -- you just need to get used to the programmer jargon a little bit and develop a feeling for its background in building software.
+We have just touched upon the tip of the iceberg here; Waf has many more goodies to offer. The Waf book :cite:`Nagy17` is an excellent source -- you just need to get used to the programmer jargon a little bit and develop a feeling for its background in building software.

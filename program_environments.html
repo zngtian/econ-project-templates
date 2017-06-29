@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Tutorial: Templates for reproducible research projects" href="index.html"/>
         <link rel="next" title="Frequently Answered Questions / Troubleshooting" href="faq.html"/>
         <link rel="prev" title="Getting started" href="getting_started.html"/>
@@ -95,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="waf.html">Introduction to Waf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="organisation.html">Organisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Project-specific Program Environments</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project-specific Program Environments</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basic-steps">Basic steps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#updating-packages">Updating packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-additional-packages">Installing additional packages</a></li>
@@ -125,7 +128,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -154,20 +157,20 @@
 <div class="section" id="basic-steps">
 <h2>Basic steps<a class="headerlink" href="#basic-steps" title="Permalink to this headline">¶</a></h2>
 <p>The templates come with a script which handles creating, activating and updating of environments. After cloning and changing to the project directory, you can run <strong>(Mac, Linux)</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>source set-env.sh
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="nb">set</span><span class="o">-</span><span class="n">env</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>or <strong>(Windows)</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nb">set</span><span class="o">-</span><span class="n">env</span><span class="o">.</span><span class="n">bat</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">-</span><span class="n">env</span><span class="o">.</span><span class="n">bat</span>
 </pre></div>
 </div>
 <p>in your shell to create a new environment with the same name as your project folder.</p>
 <p>The script will look at <em>conda_versions.txt</em> for conda packages and <em>requirements.txt</em> for pip packages and install those in the newly created python environment. Once created, you activate your environment in the same way: <strong>(Mac, Linux)</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>source set-env.sh
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="nb">set</span><span class="o">-</span><span class="n">env</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>or <strong>(Windows)</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nb">set</span><span class="o">-</span><span class="n">env</span><span class="o">.</span><span class="n">bat</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">-</span><span class="n">env</span><span class="o">.</span><span class="n">bat</span>
 </pre></div>
 </div>
 </div>

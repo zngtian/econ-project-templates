@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Tutorial: Templates for reproducible research projects" href="index.html"/>
         <link rel="next" title="Getting started" href="getting_started.html"/>
         <link rel="prev" title="Introduction to Waf" href="waf.html"/>
@@ -93,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rationale.html">Design rationale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="waf.html">Introduction to Waf</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Organisation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Organisation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#directory-structure">Directory structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#project-paths">Project paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#specifying-project-paths-in-the-main-wscript-file">Specifying project paths in the main <em>wscript</em> file</a></li>
@@ -127,7 +130,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -151,7 +154,7 @@
             
   <div class="section" id="organisation">
 <span id="id1"></span><h1>Organisation<a class="headerlink" href="#organisation" title="Permalink to this headline">¶</a></h1>
-<p>On this page, we first describe how the files are distributed in the directory hierarchy. We then move on to show how to find your way around using simple data structures in the <a class="reference internal" href="#project-paths"><span>Project paths</span></a> section, so that you just need to make changes in a single place (remember to minimise code repetition!).</p>
+<p>On this page, we first describe how the files are distributed in the directory hierarchy. We then move on to show how to find your way around using simple data structures in the <a class="reference internal" href="#project-paths"><span class="std std-ref">Project paths</span></a> section, so that you just need to make changes in a single place (remember to minimise code repetition!).</p>
 <div class="section" id="directory-structure">
 <span id="id2"></span><h2>Directory structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
 <p>The left node of the following graph shows the contents of the project root directory after executing <code class="docutils literal"><span class="pre">python</span> <span class="pre">waf.py</span> <span class="pre">configure</span> <span class="pre">build</span> <span class="pre">install</span></code>:</p>
@@ -178,7 +181,7 @@
 </li>
 </ul>
 </div></blockquote>
-<p>The contents of both the <em>root/bld/out</em> and the <em>root/src</em> directories directly follow the steps of the analysis from the <a class="reference internal" href="rationale.html#workflow"><span>workflow</span></a> section (you can usually ignore the <em>ro../bld</em> directory, except when you need to take a look at LaTeX log-files).</p>
+<p>The contents of both the <em>root/bld/out</em> and the <em>root/src</em> directories directly follow the steps of the analysis from the <a class="reference internal" href="rationale.html#workflow"><span class="std std-ref">workflow</span></a> section (you can usually ignore the <em>ro../bld</em> directory, except when you need to take a look at LaTeX log-files).</p>
 <p>The idea is that everything that needs to be run during the, say, <strong>analysis</strong> step, is specified in <em>root/src/analysis</em> and all its output is placed in <em>root/bld/out/analysis</em>.</p>
 <p>Some differences:</p>
 <blockquote>
@@ -197,7 +200,7 @@
 </li>
 </ul>
 </div></blockquote>
-<p>As an example of how things look further down in the hierarchy, consider the <em>analysis</em> step that was described <a class="reference internal" href="waf.html#waf-analysis"><span>here</span></a>:</p>
+<p>As an example of how things look further down in the hierarchy, consider the <em>analysis</em> step that was described <a class="reference internal" href="waf.html#waf-analysis"><span class="std std-ref">here</span></a>:</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/project_hierarchies_analysis.png"><img alt="_images/project_hierarchies_analysis.png" src="_images/project_hierarchies_analysis.png" style="width: 30em;" /></a>
 </div>
@@ -231,29 +234,31 @@
 <div class="section" id="specifying-project-paths-in-the-main-wscript-file">
 <h2>Specifying project paths in the main <em>wscript</em> file<a class="headerlink" href="#specifying-project-paths-in-the-main-wscript-file" title="Permalink to this headline">¶</a></h2>
 <p>This is how the project paths are specified in the main wscript file:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">top</span> <span class="o">=</span> <span class="s">&#39;.&#39;</span>
-<span class="n">out</span> <span class="o">=</span> <span class="s">&#39;bld&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">top</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
+<span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;bld&#39;</span>
 
 
 <span class="k">def</span> <span class="nf">set_project_paths</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a dictionary with project paths represented by Waf nodes.&quot;&quot;&quot;</span>
 
     <span class="n">pp</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">pp</span><span class="p">[</span><span class="s">&#39;PROJECT_ROOT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;.&#39;</span>
-    <span class="n">pp</span><span class="p">[</span><span class="s">&#39;IN_DATA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;src/original_data&#39;</span>
-    <span class="n">pp</span><span class="p">[</span><span class="s">&#39;IN_MODEL_CODE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;src/model_code&#39;</span>
-    <span class="n">pp</span><span class="p">[</span><span class="s">&#39;IN_MODEL_SPECS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;src/model_specs&#39;</span>
-    <span class="n">pp</span><span class="p">[</span><span class="s">&#39;OUT_DATA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{}/out/data&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-    <span class="n">pp</span><span class="p">[</span><span class="s">&#39;OUT_ANALYSIS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{}/out/analysis&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-    <span class="n">pp</span><span class="p">[</span><span class="s">&#39;OUT_FINAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{}/out/final&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-    <span class="n">pp</span><span class="p">[</span><span class="s">&#39;OUT_FIGURES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{}/out/figures&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-    <span class="n">pp</span><span class="p">[</span><span class="s">&#39;OUT_TABLES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{}/out/tables&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;PROJECT_ROOT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
+    <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;IN_DATA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;src/original_data&#39;</span>
+    <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;IN_MODEL_CODE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;src/model_code&#39;</span>
+    <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;IN_MODEL_SPECS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;src/model_specs&#39;</span>
+    <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;OUT_DATA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/out/data&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;OUT_ANALYSIS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/out/analysis&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;OUT_FINAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/out/final&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;OUT_FIGURES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/out/figures&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;OUT_TABLES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/out/tables&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
 
-    <span class="c"># Convert the directories into Waf nodes.</span>
+    <span class="c1"># Convert the directories into Waf nodes.</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">pp</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">pp</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">make_node</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">pp</span>
+
+
 </pre></div>
 </div>
 <p>All these paths are relative to the project root, so you can directly use them on many different machines. Note the distinction between <em>IN</em> and <em>OUT</em> in the keys and that we prefix all of the latter by <em>bld</em>.</p>
@@ -270,7 +275,9 @@
 <div class="section" id="usage-of-the-project-paths-within-wscript-files">
 <h2>Usage of the project paths within <em>wscript</em> files<a class="headerlink" href="#usage-of-the-project-paths-within-wscript-files" title="Permalink to this headline">¶</a></h2>
 <p>The first thing to do is to make these project paths available in <em>wscript</em> files further down the directory hierarchy. We do so in the <em>build</em> function of <em>root/wscript</em>; the relevant lines are:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+
+<span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
     <span class="n">ctx</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">PROJECT_PATHS</span> <span class="o">=</span> <span class="n">set_project_paths</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
     <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span> <span class="o">=</span> <span class="n">path_to</span>
 </pre></div>
@@ -295,28 +302,28 @@ of the directory trees defined in the PROJECT_PATHS dictionary above.</p>
 </ol>
 </div></blockquote>
 <p>Let us look at <em>root/src/analysis/wscript</em> as an example again:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#! python</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#! python</span>
 
 
 <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
 
-    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="s">&#39;baseline&#39;</span><span class="p">,</span> <span class="s">&#39;max_moves_2&#39;</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="s1">&#39;baseline&#39;</span><span class="p">,</span> <span class="s1">&#39;max_moves_2&#39;</span><span class="p">:</span>
 
-        <span class="c"># Illustrate use of run_py_script with automatic model specification.</span>
+        <span class="c1"># Illustrate use of run_py_script with automatic model specification.</span>
         <span class="n">ctx</span><span class="p">(</span>
-            <span class="n">features</span><span class="o">=</span><span class="s">&#39;run_py_script&#39;</span><span class="p">,</span>
-            <span class="n">source</span><span class="o">=</span><span class="s">&#39;schelling.py&#39;</span><span class="p">,</span>
+            <span class="n">features</span><span class="o">=</span><span class="s1">&#39;run_py_script&#39;</span><span class="p">,</span>
+            <span class="n">source</span><span class="o">=</span><span class="s1">&#39;schelling.py&#39;</span><span class="p">,</span>
             <span class="n">deps</span><span class="o">=</span><span class="p">[</span>
-                <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s">&#39;OUT_DATA&#39;</span><span class="p">,</span> <span class="s">&#39;initial_locations.csv&#39;</span><span class="p">),</span>
-                <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s">&#39;IN_MODEL_CODE&#39;</span><span class="p">,</span> <span class="s">&#39;agent.py&#39;</span><span class="p">),</span>
-                <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s">&#39;IN_MODEL_SPECS&#39;</span><span class="p">,</span> <span class="s">&#39;{}.json&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="p">)),</span>
+                <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s1">&#39;OUT_DATA&#39;</span><span class="p">,</span> <span class="s1">&#39;initial_locations.csv&#39;</span><span class="p">),</span>
+                <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s1">&#39;IN_MODEL_CODE&#39;</span><span class="p">,</span> <span class="s1">&#39;agent.py&#39;</span><span class="p">),</span>
+                <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s1">&#39;IN_MODEL_SPECS&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.json&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="p">)),</span>
             <span class="p">],</span>
             <span class="n">target</span><span class="o">=</span><span class="p">[</span>
-                <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s">&#39;OUT_ANALYSIS&#39;</span><span class="p">,</span> <span class="s">&#39;schelling_{}.pickle&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="p">)),</span>
-                <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s">&#39;OUT_ANALYSIS&#39;</span><span class="p">,</span> <span class="s">&#39;log&#39;</span><span class="p">,</span> <span class="s">&#39;schelling_{}.log&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="p">))</span>
+                <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s1">&#39;OUT_ANALYSIS&#39;</span><span class="p">,</span> <span class="s1">&#39;schelling_</span><span class="si">{}</span><span class="s1">.pickle&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="p">)),</span>
+                <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s1">&#39;OUT_ANALYSIS&#39;</span><span class="p">,</span> <span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="s1">&#39;schelling_</span><span class="si">{}</span><span class="s1">.log&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="p">))</span>
             <span class="p">],</span>
             <span class="n">append</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-            <span class="n">name</span><span class="o">=</span><span class="s">&#39;schelling_{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;schelling_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
         <span class="p">)</span>
 </pre></div>
 </div>
@@ -325,18 +332,18 @@ of the directory trees defined in the PROJECT_PATHS dictionary above.</p>
 <div class="section" id="usage-of-the-project-paths-in-substantial-code">
 <h2>Usage of the project paths in substantial code<a class="headerlink" href="#usage-of-the-project-paths-in-substantial-code" title="Permalink to this headline">¶</a></h2>
 <p>The first thing to do is to specify a task generator that writes a header with project paths to disk. This is done using the <code class="docutils literal"><span class="pre">write_project_paths</span></code> feature. The following line is taken from the <code class="docutils literal"><span class="pre">build</span></code> function in <em>root/wscript</em>:</p>
-<div class="highlight-python"><div class="highlight"><pre>    <span class="c"># Generate header file with project paths in &#39;bld&#39; directory</span>
-    <span class="n">ctx</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s">&#39;write_project_paths&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s">&#39;project_paths.py&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="c1"># Generate header file with project paths in &#39;bld&#39; directory</span>
+    <span class="n">ctx</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;write_project_paths&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;project_paths.py&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">write_project_paths</span></code> feature is smart: It will recognise the syntax for its target by the extension you add to the latter. Currently supported: <em>.py</em>, <em>.do</em>, <em>.m</em>, <em>.r</em>, <em>.pm</em>.</p>
 <p>The paths contained in the resulting file (<em>root/bld/project_paths.py</em>) are <strong>absolute</strong> paths, so you do not need to worry about the location of your interpreter etc.</p>
 <p>The exact usage varies a little bit by language; see the respective template for examples. In Python, you first import a function called <em>project_paths_join</em>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">bld.project_paths</span> <span class="kn">import</span> <span class="n">project_paths_join</span> <span class="k">as</span> <span class="n">ppj</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bld.project_paths</span> <span class="k">import</span> <span class="n">project_paths_join</span> <span class="k">as</span> <span class="n">ppj</span>
 </pre></div>
 </div>
 <p>You can then use it to obtain absolute paths to any location within your project. E.g., for the log-file in the analysis step, you would use:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">ppj</span><span class="p">(</span><span class="s">&quot;OUT_ANALYSIS&quot;</span><span class="p">,</span> <span class="s">&quot;log&quot;</span><span class="p">,</span> <span class="s">&quot;schelling_{}.log&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model_name</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ppj</span><span class="p">(</span><span class="s2">&quot;OUT_ANALYSIS&quot;</span><span class="p">,</span> <span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;schelling_</span><span class="si">{}</span><span class="s2">.log&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model_name</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>When you need to change the paths for whatever reason, you just need to updated them once in the main <em>wscript</em> file; everything else will work automatically. Even if you need to change the keys &#8211; e.g. because you want to break the <em>analysis</em> step into two &#8211; you can easiliy search and replace <em>OUT_ANALYSIS</em> in the entire project.</p>
