@@ -22,12 +22,11 @@ or **(Windows)**::
 
 in your shell to create a new environment with the same name as your project folder.
 
-The script will look at *conda_versions.txt* for conda packages and *requirements.txt* for pip packages and install those in the newly created python environment. Once created, you activate your environment in the same way: **(Mac, Linux)**::
+The script will look at the *.environment.OPERATINGSYSTEM.yml* file, where the OS is your current OS, for conda and pip packages and install those in the newly created python environment. Once created, you activate your environment in the same way: **(Mac, Linux)**::
 
       source set-env.sh
 
 or **(Windows)**::
-
 	set-env.bat
 
 
@@ -37,25 +36,51 @@ Updating packages
 Make sure you activated the environment by ``source set-env.sh`` / ``set-env.bat``. Then use conda or pip directly: 
 
 #. ``conda update [package]`` or ``pip install -U [package]``
-#. ``picky --update``
 
-For updaing conda all packages, replace ``[package]`` by ``--all``.
-
-We employ `Picky <http://picky.readthedocs.org/>`_ to save the  package version state after updating in the respective files to avoid version conflicts and maintain environment coherence in a project with multiple collaborators.
+For updating conda all packages, replace ``[package]`` by ``--all``.
 
 
 Installing additional packages
 ==============================
 
+To list installed packages, type
+
+
+#. ``conda list``
+
 If you want to add a package to your environment, run
 
 
 #. ``conda install [package]`` or ``pip install [package]``
-#. ``picky --update``
-
-`Picky <http://picky.readthedocs.org/>`_ will then add your package to the spec. Be wary of suprises on other operating systems, some packages might not be available on all of them. If it is not a crucial package, just remove it manually from ``conda_versions.txt``.
-
 
 **Choosing between conda and pip**
 
 Generally it is recommended to use *conda* whenever possible (necessary for most scientific packages, they are usually not pure-Python code and that is all that pip can handle, roughtly speaking). For pure-Python packages, we sometimes fall back on *pip*.
+
+
+Saving your environment
+=======================
+
+After updating or changing your environment you have to save the status in the respective *environment.OPERATINGSYSTEM.yml* file to avoid version conflictsmaintain environment coherence in a project with multiple collaborators.
+
+Run for **(Windows)**::
+
+    conda env export > environment.windows.yml
+
+Or for **(Mac)**::
+
+    conda env export > environment.osx.yml
+
+After exporting, manually delete the last line in the environment file, as it is system specific.
+
+
+Information about your conda environments
+=========================================
+
+For listing your installed conda environments, type:
+
+    conda info --envs
+
+The currently activated one will be marked.
+
+
