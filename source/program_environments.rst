@@ -12,30 +12,34 @@ The solution is to have isolated environments on a per-project basis. `Conda env
 Basic steps
 ===========
 
-The templates come with a script which handles creating, activating and updating of environments. After cloning and changing to the project directory, you can run **(Mac, Linux)**::
+The templates come with a script which handles creating, activating and updating of environments. After cloning and changing to the project directory, you can run
+
+**(Mac, Linux)**::
 
     source set-env.sh
 
 or **(Windows)**::
 
-	set-env.bat
+    set-env.bat
 
 in your shell to create a new environment with the same name as your project folder.
 
-The script will look at the *.environment.OPERATINGSYSTEM.yml* file, where the OS is your current OS, for conda and pip packages and install those in the newly created python environment. Once created, you activate your environment in the same way: **(Mac, Linux)**::
+The script will look at the *.environment.OS.yml* file, where the 'OS' is your current operating system, for conda and pip packages and install those in the newly created python environment. Once created, you activate your environment in the same way:
 
-      source set-env.sh
+**(Mac, Linux)**::
+
+    source set-env.sh
 
 or **(Windows)**::
-	set-env.bat
 
+    set-env.bat
 
 Updating packages
 =================
 
 Make sure you activated the environment by ``source set-env.sh`` / ``set-env.bat``. Then use conda or pip directly: 
 
-#. ``conda update [package]`` or ``pip install -U [package]``
+``conda update [package]`` or ``pip install -U [package]``
 
 For updating conda all packages, replace ``[package]`` by ``--all``.
 
@@ -43,15 +47,13 @@ For updating conda all packages, replace ``[package]`` by ``--all``.
 Installing additional packages
 ==============================
 
-To list installed packages, type
+To list installed packages, type::
 
+    conda list
 
-#. ``conda list``
+If you want to add a package to your environment, run:
 
-If you want to add a package to your environment, run
-
-
-#. ``conda install [package]`` or ``pip install [package]``
+``conda install [package]`` or ``pip install [package]``
 
 **Choosing between conda and pip**
 
@@ -61,7 +63,7 @@ Generally it is recommended to use *conda* whenever possible (necessary for most
 Saving your environment
 =======================
 
-After updating or changing your environment you have to save the status in the respective *environment.OPERATINGSYSTEM.yml* file to avoid version conflictsmaintain environment coherence in a project with multiple collaborators.
+After updating or changing your environment you have to save the status in the respective *environment.OS.yml* file to avoid version conflicts and maintain environment coherence in a project with multiple collaborators.
 
 Run for **(Windows)**::
 
@@ -71,13 +73,17 @@ Or for **(Mac)**::
 
     conda env export > environment.osx.yml
 
+Or for **(Linux)**::
+
+    conda env export > environment.linux.yml
+
 After exporting, manually delete the last line in the environment file, as it is system specific.
 
 
 Information about your conda environments
 =========================================
 
-For listing your installed conda environments, type:
+For listing your installed conda environments, type::
 
     conda info --envs
 
