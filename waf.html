@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -56,6 +58,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -92,17 +95,20 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rationale.html">Design rationale</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to Waf</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-configure-phase">The configure phase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#specifying-dependencies-and-the-build-phase">Specifying dependencies and the build phase</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#distributing-the-dependencies-by-step-of-the-analysis">Distributing the dependencies by step of the analysis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-data-management-step">The &#8220;data management&#8221; step</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-analysis-step">The &#8220;analysis&#8221; step</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-final-step">The &#8220;final&#8221; step</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-paper-step">The &#8220;paper&#8221; step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-data-management-step">The “data management” step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-analysis-step">The “analysis” step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-final-step">The “final” step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-paper-step">The “paper” step</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#invoking-the-build">Invoking the build</a></li>
 </ul>
 </li>
@@ -128,8 +134,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Templates for reproducible research projects</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Templates for reproducible research projects</a>
+        
       </nav>
 
 
@@ -138,23 +146,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Introduction to Waf</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduction to Waf</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/waf.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/waf.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -189,14 +214,14 @@
 
 </pre></div>
 </div>
-<p>We will have more to say about the directory structure in the <a class="reference internal" href="organisation.html#organisation"><span class="std std-ref">Organisation</span></a> section. For now, we note that a step towards achieving the goal of clearly separating inputs and outputs is that we specify a separate build directory. All output files go there (including intermediate output), it is never kept under version control, and it can be safely removed &#8211; everything in it will be reconstructed automatically the next time Waf is run.</p>
+<p>We will have more to say about the directory structure in the <a class="reference internal" href="organisation.html#organisation"><span class="std std-ref">Organisation</span></a> section. For now, we note that a step towards achieving the goal of clearly separating inputs and outputs is that we specify a separate build directory. All output files go there (including intermediate output), it is never kept under version control, and it can be safely removed – everything in it will be reconstructed automatically the next time Waf is run.</p>
 <div class="section" id="the-configure-phase">
 <h2>The configure phase<a class="headerlink" href="#the-configure-phase" title="Permalink to this headline">¶</a></h2>
-<p>The first time you fire up a project you need to invoke Waf by typing:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">waf</span><span class="o">.</span><span class="n">py</span> <span class="n">configure</span>
+<p>The first time you fire up a project you need to invoke Waf by changing to the project root directory in a shell and typing</p>
+<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ python waf.py configure
 </pre></div>
 </div>
-<p>in a command prompt. You only need to do this once, or whenever the location of the programs that your project requires changes (say, you installed a new version of LaTeX), you performed a distclean, or manually removed the entire build directory. Because of the <code class="docutils literal"><span class="pre">configure</span></code> argument Waf will call the function by the same name, which lives in the main <em>wscript</em> file:</p>
+<p>You only need to do this once, or whenever the location of the programs that your project requires changes (say, you installed a new version of LaTeX), you performed a distclean, or manually removed the entire build directory. Because of the <code class="docutils literal"><span class="pre">configure</span></code> argument Waf will call the function by the same name, which lives in the main <em>wscript</em> file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>
 
 <span class="k">def</span> <span class="nf">configure</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
@@ -218,19 +243,19 @@
 <li><code class="docutils literal"><span class="pre">ctx.load('why')</span></code> loads a tool that helps in debugging dependencies, very useful in complicated situations.</li>
 <li><code class="docutils literal"><span class="pre">ctx.load('biber')</span></code> loads a <a class="reference external" href="http://biblatex-biber.sourceforge.net/">modern replacement</a> for BibTeX and the entire LaTeX machinery with it.</li>
 <li><code class="docutils literal"><span class="pre">ctx.load('run_py_script')</span></code> loads a little tool for running Python scripts. Similar tools exist for Matlab, Stata, R, and Perl. More can be easily created.</li>
-<li><code class="docutils literal"><span class="pre">ctx.load('sphinx_build')</span></code> loads the tool required to build the project&#8217;s documentation.</li>
+<li><code class="docutils literal"><span class="pre">ctx.load('sphinx_build')</span></code> loads the tool required to build the project’s documentation.</li>
 <li><code class="docutils literal"><span class="pre">ctx.load('write_project_headers')</span></code> loads a tool for handling project paths. We postpone the discussion until the <a class="reference internal" href="organisation.html#project-paths"><span class="std std-ref">section</span></a> by the same name.</li>
 </ul>
 </div></blockquote>
 <p>Waf now knows everything about your computer system that it needs to know in order to perform the tasks you ask it to perform. Of course, other projects may require different tools, but you load them in the same way.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">ctx</span></code> argument that is passed to all functions (configure, build, ...) in Waf is short for &#8220;context&#8221;. It holds all kinds of methods and variables relevant for executing the task (configure, build, ...) at hand. See the Waf documentation (<a class="reference external" href="http://docs.waf.googlecode.com/git/book_17/single.html">here</a> or <a class="reference external" href="http://docs.waf.googlecode.com/git/apidocs_17/index.html#">here</a>).</p>
+<p class="last">The <code class="docutils literal"><span class="pre">ctx</span></code> argument that is passed to all functions (configure, build, …) in Waf is short for “context”. It holds all kinds of methods and variables relevant for executing the task (configure, build, …) at hand. See the Waf documentation (<a class="reference external" href="http://docs.waf.googlecode.com/git/book_17/single.html">here</a> or <a class="reference external" href="http://docs.waf.googlecode.com/git/apidocs_17/index.html#">here</a>).</p>
 </div>
 </div>
 <div class="section" id="specifying-dependencies-and-the-build-phase">
 <h2>Specifying dependencies and the build phase<a class="headerlink" href="#specifying-dependencies-and-the-build-phase" title="Permalink to this headline">¶</a></h2>
-<p>Let us go step-by-step through the entire dependency graph of the project from the section on <a class="reference internal" href="rationale.html#dag-s"><span class="std std-ref">DAG&#8217;s</span></a>, which is reproduced here for convenience:</p>
+<p>Let us go step-by-step through the entire dependency graph of the project from the section on <a class="reference internal" href="rationale.html#dag-s"><span class="std std-ref">DAG’s</span></a>, which is reproduced here for convenience:</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/schelling_dependencies.png"><img alt="_images/schelling_dependencies.png" src="_images/schelling_dependencies.png" style="width: 50em;" /></a>
 </div>
@@ -253,7 +278,7 @@
 <p>The same comments as before apply to what the <code class="docutils literal"><span class="pre">ctx.recurse</span></code> calls do. Hence you can specify the dependencies separately for each step of the analysis.</p>
 </div>
 <div class="section" id="the-data-management-step">
-<h3>The &#8220;data management&#8221; step<a class="headerlink" href="#the-data-management-step" title="Permalink to this headline">¶</a></h3>
+<h3>The “data management” step<a class="headerlink" href="#the-data-management-step" title="Permalink to this headline">¶</a></h3>
 <p>The dependency structure at this step of the analysis is particularly simple, as we have one source and one target:</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/schelling_dependencies_data_mgmt.png"><img alt="_images/schelling_dependencies_data_mgmt.png" src="_images/schelling_dependencies_data_mgmt.png" style="width: 30em;" /></a>
@@ -285,7 +310,7 @@
 <p>And this is it! The rest are slight variations on this procedure and straightforward generalisations thereof.</p>
 </div>
 <div class="section" id="the-analysis-step">
-<span id="waf-analysis"></span><h3>The &#8220;analysis&#8221; step<a class="headerlink" href="#the-analysis-step" title="Permalink to this headline">¶</a></h3>
+<span id="waf-analysis"></span><h3>The “analysis” step<a class="headerlink" href="#the-analysis-step" title="Permalink to this headline">¶</a></h3>
 <p>We concentrate our discussion on the top part of the graph, i.e. the baseline model. The lower part is the exact mirror image. We have the following structure:</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/schelling_dependencies_main.png"><img alt="_images/schelling_dependencies_main.png" src="_images/schelling_dependencies_main.png" style="width: 40em;" /></a>
@@ -335,7 +360,7 @@
 </li>
 <li><p class="first">The first item in the list of <code class="docutils literal"><span class="pre">deps</span></code> is <strong>exactly</strong> the same as the target in the data management step.</p>
 </li>
-<li><p class="first">Don&#8217;t worry about the directories in the <code class="docutils literal"><span class="pre">ctx.path_to()</span></code> calls until the section &#8220;<a class="reference internal" href="organisation.html#organisation"><span class="std std-ref">Organisation</span></a>&#8221; below</p>
+<li><p class="first">Don’t worry about the directories in the <code class="docutils literal"><span class="pre">ctx.path_to()</span></code> calls until the section “<a class="reference internal" href="organisation.html#organisation"><span class="std std-ref">Organisation</span></a>” below</p>
 </li>
 <li><p class="first">We keep a log-file called <em>schelling_baseline.log</em>, which we left out of the dependency tree.</p>
 </li>
@@ -353,7 +378,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="the-final-step">
-<h3>The &#8220;final&#8221; step<a class="headerlink" href="#the-final-step" title="Permalink to this headline">¶</a></h3>
+<h3>The “final” step<a class="headerlink" href="#the-final-step" title="Permalink to this headline">¶</a></h3>
 <p>Again, we concentrate on the baseline model.</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/schelling_dependencies_final.png"><img alt="_images/schelling_dependencies_final.png" src="_images/schelling_dependencies_final.png" style="width: 40em;" /></a>
@@ -382,8 +407,8 @@
 <p>Everything works just as before: We set <em>plot_locations.py</em> as the source, specify additional dependencies (among them the relevant target from the <strong>analysis</strong> step), and append the model name on the command line.</p>
 </div>
 <div class="section" id="the-paper-step">
-<h3>The &#8220;paper&#8221; step<a class="headerlink" href="#the-paper-step" title="Permalink to this headline">¶</a></h3>
-<p>The pdf with the final &#8220;paper&#8221; depends on two additional files that were not shown in the full dependency graph for legibility reasons, a reference bibliography, and a LaTeX-file with the formula for the agents&#8217; decision rule (specified in a separate file so it can be re-used in the presentation, which is omitted from the graph as well):</p>
+<h3>The “paper” step<a class="headerlink" href="#the-paper-step" title="Permalink to this headline">¶</a></h3>
+<p>The pdf with the final “paper” depends on two additional files that were not shown in the full dependency graph for legibility reasons, a reference bibliography, and a LaTeX-file with the formula for the agents’ decision rule (specified in a separate file so it can be re-used in the presentation, which is omitted from the graph as well):</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/schelling_dependencies_paper.png"><img alt="_images/schelling_dependencies_paper.png" src="_images/schelling_dependencies_paper.png" style="width: 40em;" /></a>
 </div>
@@ -411,12 +436,12 @@
 </div>
 <div class="section" id="invoking-the-build">
 <h3>Invoking the build<a class="headerlink" href="#invoking-the-build" title="Permalink to this headline">¶</a></h3>
-<p>You start building the project by typing:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">waf</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
+<p>You start building the project by typing</p>
+<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ python waf.py build
 </pre></div>
 </div>
-<p>at a command prompt. Because this is the most frequent command to execute, you can leave out the <code class="docutils literal"><span class="pre">build</span></code> qualifier and use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">waf</span><span class="o">.</span><span class="n">py</span>
+<p>at a command prompt. Because this is the most frequent command to execute, you can leave out the <code class="docutils literal"><span class="pre">build</span></code> qualifier and use</p>
+<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ python waf.py
 </pre></div>
 </div>
 <p>as a shortcut; it has exactly the same effect.</p>
@@ -424,7 +449,7 @@
 </div>
 <div class="section" id="the-installation-phase">
 <h2>The installation phase<a class="headerlink" href="#the-installation-phase" title="Permalink to this headline">¶</a></h2>
-<p>Some targets you want to have easily accessible. This is particularly true for the paper and the presentation. Instead of having to plow through lots of byproducts of the LaTeX compilation in <em>bld/src/paper</em>, it would be nice to have the two pdf&#8217;s in the project root folder.</p>
+<p>Some targets you want to have easily accessible. This is particularly true for the paper and the presentation. Instead of having to plow through lots of byproducts of the LaTeX compilation in <em>bld/src/paper</em>, it would be nice to have the two pdf’s in the project root folder.</p>
 <p>In order to achieve this, the following code is found in <em>src/paper/wscript</em> (still in the loop where <code class="docutils literal"><span class="pre">s</span></code> takes on the values <code class="docutils literal"><span class="pre">'research_paper'</span></code> or <code class="docutils literal"><span class="pre">'research_pres_30min'</span></code>):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>        <span class="n">ctx</span><span class="o">.</span><span class="n">install_files</span><span class="p">(</span>
             <span class="n">ctx</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">PROJECT_PATHS</span><span class="p">[</span><span class="s1">&#39;PROJECT_ROOT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abspath</span><span class="p">(),</span>
@@ -432,13 +457,13 @@
         <span class="p">)</span>
 </pre></div>
 </div>
-<p>This installation of targets can be triggered by typing either of the following commands in a shell:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">waf</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span> <span class="n">install</span>
-<span class="n">python</span> <span class="n">waf</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<p>This installation of targets can be triggered by typing either of the following commands in a shell</p>
+<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ python waf.py build install
+python waf.py install
 </pre></div>
 </div>
-<p>Conversely, you can remove all installed targets by:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">waf</span><span class="o">.</span><span class="n">py</span> <span class="n">uninstall</span>
+<p>Conversely, you can remove all installed targets by</p>
+<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ python waf.py uninstall
 </pre></div>
 </div>
 </div>
@@ -455,20 +480,20 @@
 <blockquote>
 <div><ul class="simple">
 <li>the execution of the functions we discussed above;</li>
-<li>and Waf&#8217;s execution of the tasks.</li>
+<li>and Waf’s execution of the tasks.</li>
 </ul>
 </div></blockquote>
 <p>In between, it has to set the order in which it would execute the tasks and whether a target is up-to-date or not (hence the reading from and writing to an internal cache).</p>
 <p>While developing your code, errors will usually show up in the last step: The task returns an error and Waf stops. However, the errors do not have anything to do with Waf, it simply runs the code you wrote on your behalf.</p>
-<p>&#8220;Genuine&#8221; Waf errors will occur only if you made errors in writing the <em>wscript</em> files (e.g., syntax errors) or specify the dependencies in a way that is not compatible with a DAG (e.g., circular dependencies or multiple ways to build a target). A hybrid error will occur, for example, if a task did not produce one of the targets you told Waf about. Waf will stop with an error again and it lies in your best judgement of whether you misspecified things in your <em>wscript</em> file or in your research code.</p>
-<p>By default, Waf will execute tasks in parallel if your computer is sufficiently powerful and if the dependency graphs allows for it. This often leads to a major speed gain, which comes as a free lunch. However, it can be annoying during the development phase because error messages from different tasks get into each others&#8217; way. You can force execution of a single task at a time by starting Waf with the <code class="docutils literal"><span class="pre">-j1</span></code> switch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">waf</span> <span class="o">-</span><span class="n">j1</span>
+<p>“Genuine” Waf errors will occur only if you made errors in writing the <em>wscript</em> files (e.g., syntax errors) or specify the dependencies in a way that is not compatible with a DAG (e.g., circular dependencies or multiple ways to build a target). A hybrid error will occur, for example, if a task did not produce one of the targets you told Waf about. Waf will stop with an error again and it lies in your best judgement of whether you misspecified things in your <em>wscript</em> file or in your research code.</p>
+<p>By default, Waf will execute tasks in parallel if your computer is sufficiently powerful and if the dependency graphs allows for it. This often leads to a major speed gain, which comes as a free lunch. However, it can be annoying during the development phase because error messages from different tasks get into each others’ way. You can force execution of a single task at a time by starting Waf with the <code class="docutils literal"><span class="pre">-j1</span></code> switch</p>
+<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ python waf -j1
 </pre></div>
 </div>
 <p>Other useful options are:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">-v</span></code> or <code class="docutils literal"><span class="pre">-vv</span></code> or <code class="docutils literal"><span class="pre">-vvv</span></code> for making Waf&#8217;s output ever more <strong>verbose</strong> &#8211; this is helpful for diagnosing problems with what you specified in your <em>wscript</em> files. Verbose output is especially useful when combined with the following options.</li>
+<li><code class="docutils literal"><span class="pre">-v</span></code> or <code class="docutils literal"><span class="pre">-vv</span></code> or <code class="docutils literal"><span class="pre">-vvv</span></code> for making Waf’s output ever more <strong>verbose</strong> – this is helpful for diagnosing problems with what you specified in your <em>wscript</em> files. Verbose output is especially useful when combined with the following options.</li>
 <li><code class="docutils literal"><span class="pre">--zones=deps</span></code> tells you about the dependencies that Waf finds for a particular task</li>
 <li><code class="docutils literal"><span class="pre">--zones=task</span></code> tells you why a target needs to be rebuilt (i.e. which dependency changed)</li>
 </ul>
@@ -488,7 +513,7 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Waf decides which tasks need to be executed based on the nodes&#8217; signatures and performs the required actions.</p>
+<li><p class="first">Waf decides which tasks need to be executed based on the nodes’ signatures and performs the required actions.</p>
 <blockquote>
 <div><ul class="simple">
 <li>A signature roughly is a sufficient statistic for file contents.</li>
@@ -499,21 +524,24 @@
 </li>
 </ol>
 </div></blockquote>
-<p>We have just touched upon the tip of the iceberg here; Waf has many more goodies to offer. The Waf book <a class="reference internal" href="zreferences.html#nagy17" id="id2">[Nag17]</a> is an excellent source &#8211; you just need to get used to the programmer jargon a little bit and develop a feeling for its background in building software.</p>
+<p>We have just touched upon the tip of the iceberg here; Waf has many more goodies to offer. The Waf book <a class="reference internal" href="zreferences.html#nagy17" id="id2">[Nag17]</a> is an excellent source – you just need to get used to the programmer jargon a little bit and develop a feeling for its background in building software.</p>
 </div>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="organisation.html" class="btn btn-neutral float-right" title="Organisation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="organisation.html" class="btn btn-neutral float-right" title="Organisation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="rationale.html" class="btn btn-neutral" title="Design rationale" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="rationale.html" class="btn btn-neutral" title="Design rationale" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -547,13 +575,14 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

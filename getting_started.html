@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -56,6 +58,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -92,7 +95,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rationale.html">Design rationale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="waf.html">Introduction to Waf</a></li>
@@ -119,8 +125,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Templates for reproducible research projects</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Templates for reproducible research projects</a>
+        
       </nav>
 
 
@@ -129,23 +137,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Getting started</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Getting started</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/getting_started.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -188,12 +213,12 @@
 <ul class="simple">
 <li>Assuming that you use git, first move all the code in the existing project to a subdirectory called old_code. Commit.</li>
 <li>Now move the code from the econ-project-templates over into this project, as described in the basic steps above. Make sure the examples work. Commit.</li>
-<li>Decide on which steps you&#8217;ll likely need / use (e.g., in a simulation exercise you probably won&#8217;t need any data management). Delete the directories you do not need from <code class="docutils literal"><span class="pre">src</span></code> and the corresponding <code class="docutils literal"><span class="pre">ctx.recurse()</span></code> calls in <code class="docutils literal"><span class="pre">src/wscript</span></code>. Commit.</li>
+<li>Decide on which steps you’ll likely need / use (e.g., in a simulation exercise you probably won’t need any data management). Delete the directories you do not need from <code class="docutils literal"><span class="pre">src</span></code> and the corresponding <code class="docutils literal"><span class="pre">ctx.recurse()</span></code> calls in <code class="docutils literal"><span class="pre">src/wscript</span></code>. Commit.</li>
 <li>Start with the data management code. To do so, comment out everything except for the recursions to the library and data_management directories from src/wscript</li>
 <li>Move your data files to the right new spot. Delete the ones from the template.</li>
 <li>Copy &amp; paste the body of (the first steps of) your data management code to the example files, keeping the basic machinery in place. E.g., in case of the Stata template: In the <code class="docutils literal"><span class="pre">src/data_management/clean_data.do</span></code> script, keep the top lines (inclusion of project paths and opening of the log file). Paste your code below that and adjust the last lines saving the dta file.</li>
 <li>Adjust the <code class="docutils literal"><span class="pre">src/data_management/wscript</span></code> file with the right filenames.</li>
-<li>Run waf, adjusting the code for the errors you&#8217;ll likely see.</li>
+<li>Run waf, adjusting the code for the errors you’ll likely see.</li>
 <li>Move on step-by-step like this.</li>
 </ul>
 </div>
@@ -205,15 +230,18 @@
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="program_environments.html" class="btn btn-neutral float-right" title="Project-specific Program Environments" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="program_environments.html" class="btn btn-neutral float-right" title="Project-specific Program Environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="organisation.html" class="btn btn-neutral" title="Organisation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="organisation.html" class="btn btn-neutral" title="Organisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -247,13 +275,14 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

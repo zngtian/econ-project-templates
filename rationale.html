@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -56,6 +58,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -92,7 +95,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Design rationale</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#running-example">Running example</a></li>
@@ -118,8 +124,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Templates for reproducible research projects</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Templates for reproducible research projects</a>
+        
       </nav>
 
 
@@ -128,23 +136,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Design rationale</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Design rationale</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/rationale.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/rationale.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -156,7 +181,7 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li><strong>Separation of logical chunks</strong> A minimal requirement for a project to scale.</li>
-<li><strong>Only execute required tasks, automatically</strong> Again required for scalability. It means that the machine needs to know what is meant by a &#8220;required task&#8221;.</li>
+<li><strong>Only execute required tasks, automatically</strong> Again required for scalability. It means that the machine needs to know what is meant by a “required task”.</li>
 <li><strong>Re-use of code and data instead of copying and pasting</strong> Else you will forget the copy &amp; paste step at some point down the road. At best, this leads to errors; at worst, to misinterpreting the results.</li>
 <li><strong>Be as language-agnostic as possible</strong> Make it easy to use the best tool for a particular task and to mix tools in a project.</li>
 <li><strong>Separation of inputs and outputs</strong> Required to find your way around in a complex project.</li>
@@ -165,10 +190,10 @@
 <p>I will not touch upon the last point until the <a class="reference internal" href="organisation.html#organisation"><span class="std std-ref">Organisation</span></a> section below. The remainder of this page introduces an example and a general concept of how to think about the first four points.</p>
 <div class="section" id="running-example">
 <h2>Running example<a class="headerlink" href="#running-example" title="Permalink to this headline">¶</a></h2>
-<p>To fix ideas, let&#8217;s look at the example of Schelling&#8217;s (1969, <a class="reference internal" href="zreferences.html#schelling69" id="id1">[Sch69]</a>) segregation model, as outlined <a class="reference external" href="http://quant-econ.net/py/schelling.html">here</a> in Stachurski&#8217;s and Sargent&#8217;s online course <a class="reference internal" href="zreferences.html#stachurskisargent13" id="id2">[SS13]</a>. Please look at their <a class="reference external" href="http://quant-econ.net/py/schelling.html">description</a> of the Schelling model. Say we are thinking of two variants for the moment:</p>
+<p>To fix ideas, let’s look at the example of Schelling’s (1969, <a class="reference internal" href="zreferences.html#schelling69" id="id1">[Sch69]</a>) segregation model, as outlined <a class="reference external" href="http://quant-econ.net/py/schelling.html">here</a> in Stachurski’s and Sargent’s online course <a class="reference internal" href="zreferences.html#stachurskisargent13" id="id2">[SS13]</a>. Please look at their <a class="reference external" href="http://quant-econ.net/py/schelling.html">description</a> of the Schelling model. Say we are thinking of two variants for the moment:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Replicate the <a class="reference external" href="http://quant-econ.net/py/schelling.html#results">figures</a> from Stachurski&#8217;s and Sargent&#8217;s course.</li>
+<li>Replicate the <a class="reference external" href="http://quant-econ.net/py/schelling.html#results">figures</a> from Stachurski’s and Sargent’s course.</li>
 <li>Check what happens when agents are restricted to two random moves per period; after that they have to stop regardless whether they are happy or not.</li>
 </ol>
 </div></blockquote>
@@ -185,7 +210,7 @@
 </div>
 <div class="section" id="how-to-organise-the-workflow">
 <span id="workflow"></span><h2>How to organise the workflow?<a class="headerlink" href="#how-to-organise-the-workflow" title="Permalink to this headline">¶</a></h2>
-<p>A naïve way to ensure reproducibility is to have a <em>master-script</em> (do-file, m-file, ...) that runs each file one after the other. One way to implement that for the above setup would be to have code for each step of the analysis and a loop over both models within each step:</p>
+<p>A naïve way to ensure reproducibility is to have a <em>master-script</em> (do-file, m-file, …) that runs each file one after the other. One way to implement that for the above setup would be to have code for each step of the analysis and a loop over both models within each step:</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/steps_only_full.png"><img alt="_images/steps_only_full.png" src="_images/steps_only_full.png" style="width: 25em;" /></a>
 </div>
@@ -194,7 +219,7 @@
 <a class="reference internal image-reference" href="_images/model_steps_full.png"><img alt="_images/model_steps_full.png" src="_images/model_steps_full.png" style="width: 25em;" /></a>
 </div>
 <p>The equivalent comment applies here: Either keep track of which model needs to be run after making changes manually, or run everything at once.</p>
-<p>Ideally though, you want to be even more fine-grained than this and only run individual elements. This is particularly true when your entire computations take some time. In this case, running all steps every time via the <em>master-script</em> simply is not an option. All my research projects ended up running for a long time, no matter how simple they were... The figure shows you that even in this simple example, there are now quite a few parts to remember:</p>
+<p>Ideally though, you want to be even more fine-grained than this and only run individual elements. This is particularly true when your entire computations take some time. In this case, running all steps every time via the <em>master-script</em> simply is not an option. All my research projects ended up running for a long time, no matter how simple they were… The figure shows you that even in this simple example, there are now quite a few parts to remember:</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/model_steps_select.png"><img alt="_images/model_steps_select.png" src="_images/model_steps_select.png" style="width: 25em;" /></a>
 </div>
@@ -216,9 +241,9 @@
 <li>Red for compiling the pdf of the paper</li>
 </ul>
 </div></blockquote>
-<p>Bluish nodes are pure source files &#8211; they do not depend on any other file and hence none of the edges originates from any of them. In contrast, brownish nodes are targets, they are generated by the code. Some may serve as intermediate targets only &#8211; e.g. there is not much you would want to do with the raw simulated sample (<em>initial_locations.csv</em>) except for processing it further.</p>
+<p>Bluish nodes are pure source files – they do not depend on any other file and hence none of the edges originates from any of them. In contrast, brownish nodes are targets, they are generated by the code. Some may serve as intermediate targets only – e.g. there is not much you would want to do with the raw simulated sample (<em>initial_locations.csv</em>) except for processing it further.</p>
 <p>In a first run, all targets have to be generated, of course. In later runs, a target only needs to be re-generated if one of its direct <strong>dependencies</strong> changes. E.g. when we make changes to <em>baseline.json</em>, we will need to build <em>schelling_baseline.pickle</em> and  <em>schelling_baseline.png</em> anew. Depending on whether <em>schelling_baseline.png</em> actually changes, we need to re-compile the pdf as well. We will dissect this example in more detail in the next section. The only important thing at this point is to understand the general idea.</p>
-<p>Of course this is overkill for a textbook example &#8211; we could easily keep the code closer together than this. But such a strategy does not scale to serious papers with many different specifications. As a case in point, consider the DAG for an early version of <a class="reference internal" href="zreferences.html#gaudecker14" id="id3">[vGng]</a>:</p>
+<p>Of course this is overkill for a textbook example – we could easily keep the code closer together than this. But such a strategy does not scale to serious papers with many different specifications. As a case in point, consider the DAG for an early version of <a class="reference internal" href="zreferences.html#gaudecker14" id="id3">[vGng]</a>:</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/pfefficiency.jpg"><img alt="_images/pfefficiency.jpg" src="_images/pfefficiency.jpg" style="width: 35em;" /></a>
 </div>
@@ -228,15 +253,18 @@
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="waf.html" class="btn btn-neutral float-right" title="Introduction to Waf" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="waf.html" class="btn btn-neutral float-right" title="Introduction to Waf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -270,13 +298,14 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

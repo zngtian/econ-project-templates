@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -56,6 +58,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -92,7 +95,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rationale.html">Design rationale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="waf.html">Introduction to Waf</a></li>
@@ -131,8 +137,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Templates for reproducible research projects</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Templates for reproducible research projects</a>
+        
       </nav>
 
 
@@ -141,23 +149,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Frequently Answered Questions / Troubleshooting</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Frequently Answered Questions / Troubleshooting</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/faq.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/faq.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -182,7 +207,7 @@
 </pre></div>
 </div>
 </div></blockquote>
-<p>In my experience, it helps to run waf on only one core for the first time you compile multiple LaTeX documents (once Biber&#8217;s cache is built correctly, you can do this in parallel again):</p>
+<p>In my experience, it helps to run waf on only one core for the first time you compile multiple LaTeX documents (once Biber’s cache is built correctly, you can do this in parallel again):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">waf</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">j1</span>
 </pre></div>
 </div>
@@ -191,7 +216,7 @@
 <div class="section" id="biber-on-64-bit-miktex">
 <h3>Biber on 64-bit MikTeX<a class="headerlink" href="#biber-on-64-bit-miktex" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>There have been mulitple issues of with biber on Windows, sometimes leading to strange error messages from Python&#8217;s subprocess module (e.g., &#8220;file not found&#8221; errors). Apparently, current 64-bit MikTeX distributions do not contain Biber. Two possible fixes:</p>
+<div><p>There have been mulitple issues of with biber on Windows, sometimes leading to strange error messages from Python’s subprocess module (e.g., “file not found” errors). Apparently, current 64-bit MikTeX distributions do not contain Biber. Two possible fixes:</p>
 <ul>
 <li><p class="first"><strong>Recommended:</strong> In the main <code class="docutils literal"><span class="pre">wscript</span></code> file, replace the line:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ctx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;biber&#39;</span><span class="p">)</span>
@@ -210,7 +235,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>For the adventurous:</strong> Download a 64-bit version of biber here: <a class="reference external" href="http://biblatex-biber.sourceforge.net/">http://biblatex-biber.sourceforge.net/</a>. Put the file <em>biber.exe</em> into the correct folder, typically that will be &#8220;C:Program FilesMiKTeX 2.9miktexbinx64&#8221;, &#8220;C:Program FilesMiKTeX 2.9miktexbin&#8221;, or the like. Hat tip to Andrey Alexandrov, a student in my 2014 class at Bonn.</p>
+<li><p class="first"><strong>For the adventurous:</strong> Download a 64-bit version of biber here: <a class="reference external" href="http://biblatex-biber.sourceforge.net/">http://biblatex-biber.sourceforge.net/</a>. Put the file <em>biber.exe</em> into the correct folder, typically that will be “C:Program FilesMiKTeX 2.9miktexbinx64”, “C:Program FilesMiKTeX 2.9miktexbin”, or the like. Hat tip to Andrey Alexandrov, a student in my 2014 class at Bonn.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -218,11 +243,11 @@
 </div>
 <div class="section" id="using-spyder-with-waf">
 <span id="spyder-waf"></span><h2>Using Spyder with Waf<a class="headerlink" href="#using-spyder-with-waf" title="Permalink to this headline">¶</a></h2>
-<p>Spyder is a useful IDE for developing scientific Python code &#8211; it has been specifically developed for this purpose and has first-class support for data structures like NumPy arrays and pandas dataframes.</p>
+<p>Spyder is a useful IDE for developing scientific Python code – it has been specifically developed for this purpose and has first-class support for data structures like NumPy arrays and pandas dataframes.</p>
 <p>In the context of these project templates, there are just two issues to consider.</p>
 <div class="section" id="debugging-wscript-files">
 <h3>Debugging wscript files<a class="headerlink" href="#debugging-wscript-files" title="Permalink to this headline">¶</a></h3>
-<p>Sometimes it is helpful to debug your build code directly. As the wscript files are just pure Python code Spyder can handle them in principle. The tricky bit is to make Spyder recognise the them as Python scripts &#8211; usually it just uses the extension <code class="docutils literal"><span class="pre">.py</span></code> to infer that fact. As you cannot simply add this extension to wscript files, you must tell Spyder inside the wscript file using a so-called &#8220;shebang&#8221;. Simply add the following line as the first thing to all your wscripts:</p>
+<p>Sometimes it is helpful to debug your build code directly. As the wscript files are just pure Python code Spyder can handle them in principle. The tricky bit is to make Spyder recognise the them as Python scripts – usually it just uses the extension <code class="docutils literal"><span class="pre">.py</span></code> to infer that fact. As you cannot simply add this extension to wscript files, you must tell Spyder inside the wscript file using a so-called “shebang”. Simply add the following line as the first thing to all your wscripts:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#! python</span>
 </pre></div>
 </div>
@@ -231,11 +256,11 @@
 <div class="section" id="setting-the-pythonpath">
 <h3>Setting the PYTHONPATH<a class="headerlink" href="#setting-the-pythonpath" title="Permalink to this headline">¶</a></h3>
 <p>The machinery of the imports in Python scripts requires the PYTHONPATH environmental variable to include the project root; you will need to add the project root directory to the PYTHONPATH when debugging files in Spyder as well.</p>
-<p>In order to do so, first create a Spyder project in the directory where you want your research to be (click &#8220;Yes&#8221; on the question &#8220;The following directory is not empty: ... Do you want to continue?&#8221;). Then right-click on the project&#8217;s root folder and select &#8220;Add to PYTHONPATH&#8221;.</p>
+<p>In order to do so, first create a Spyder project in the directory where you want your research to be (click “Yes” on the question “The following directory is not empty: … Do you want to continue?”). Then right-click on the project’s root folder and select “Add to PYTHONPATH”.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/spyder_pythonpath.png"><img alt="_images/spyder_pythonpath.png" src="_images/spyder_pythonpath.png" style="width: 18cm;" /></a>
 </div></blockquote>
-<p>Any <code class="docutils literal"><span class="pre">ImportErrors</span></code> are likely due to this not being done correctly. Note that you <strong>must</strong> set the run configuration (F6 or select &#8220;Run&#8221; from the menu bar and then &#8220;Configure&#8221;) to &#8220;Execute in a new dedicated Python console&#8221;.</p>
+<p>Any <code class="docutils literal"><span class="pre">ImportErrors</span></code> are likely due to this not being done correctly. Note that you <strong>must</strong> set the run configuration (F6 or select “Run” from the menu bar and then “Configure”) to “Execute in a new dedicated Python console”.</p>
 </div>
 </div>
 <div class="section" id="stata-packages">
@@ -286,15 +311,18 @@ Build failed
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="zreferences.html" class="btn btn-neutral float-right" title="References" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="zreferences.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="program_environments.html" class="btn btn-neutral" title="Project-specific Program Environments" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="program_environments.html" class="btn btn-neutral" title="Project-specific Program Environments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -328,13 +356,14 @@ Build failed
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

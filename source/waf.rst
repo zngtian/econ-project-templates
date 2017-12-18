@@ -28,11 +28,13 @@ We will have more to say about the directory structure in the :ref:`organisation
 The configure phase
 ===================
 
-The first time you fire up a project you need to invoke Waf by typing::
-    
-    python waf.py configure
+The first time you fire up a project you need to invoke Waf by changing to the project root directory in a shell and typing
 
-in a command prompt. You only need to do this once, or whenever the location of the programs that your project requires changes (say, you installed a new version of LaTeX), you performed a distclean, or manually removed the entire build directory. Because of the ``configure`` argument Waf will call the function by the same name, which lives in the main *wscript* file:
+.. code:: console
+
+    $ python waf.py configure
+
+You only need to do this once, or whenever the location of the programs that your project requires changes (say, you installed a new version of LaTeX), you performed a distclean, or manually removed the entire build directory. Because of the ``configure`` argument Waf will call the function by the same name, which lives in the main *wscript* file:
 
 .. literalinclude:: ../example_python_template/wscript
     :start-after: return os.path.join(path_to_dir, args[-1])
@@ -191,13 +193,17 @@ So how does Waf know about the additional four dependencies? The *tex* tool is s
 Invoking the build
 ------------------
 
-You start building the project by typing::
+You start building the project by typing
 
-    python waf.py build
+.. code:: console
 
-at a command prompt. Because this is the most frequent command to execute, you can leave out the ``build`` qualifier and use::
+    $ python waf.py build
 
-    python waf.py
+at a command prompt. Because this is the most frequent command to execute, you can leave out the ``build`` qualifier and use
+
+.. code:: console
+
+    $ python waf.py
 
 as a shortcut; it has exactly the same effect.
 
@@ -212,14 +218,18 @@ In order to achieve this, the following code is found in *src/paper/wscript* (st
 .. literalinclude:: ../example_python_template/src/paper/wscript
     :start-after: # Install to the project root.
 
-This installation of targets can be triggered by typing either of the following commands in a shell::
+This installation of targets can be triggered by typing either of the following commands in a shell
 
-    python waf.py build install
+.. code:: console
+
+    $ python waf.py build install
     python waf.py install
 
-Conversely, you can remove all installed targets by::
+Conversely, you can remove all installed targets by
 
-    python waf.py uninstall
+.. code:: console
+
+    $ python waf.py uninstall
 
 
 .. _build_phase:
@@ -245,9 +255,11 @@ While developing your code, errors will usually show up in the last step: The ta
 
 "Genuine" Waf errors will occur only if you made errors in writing the *wscript* files (e.g., syntax errors) or specify the dependencies in a way that is not compatible with a DAG (e.g., circular dependencies or multiple ways to build a target). A hybrid error will occur, for example, if a task did not produce one of the targets you told Waf about. Waf will stop with an error again and it lies in your best judgement of whether you misspecified things in your *wscript* file or in your research code.
 
-By default, Waf will execute tasks in parallel if your computer is sufficiently powerful and if the dependency graphs allows for it. This often leads to a major speed gain, which comes as a free lunch. However, it can be annoying during the development phase because error messages from different tasks get into each others' way. You can force execution of a single task at a time by starting Waf with the ``-j1`` switch::
+By default, Waf will execute tasks in parallel if your computer is sufficiently powerful and if the dependency graphs allows for it. This often leads to a major speed gain, which comes as a free lunch. However, it can be annoying during the development phase because error messages from different tasks get into each others' way. You can force execution of a single task at a time by starting Waf with the ``-j1`` switch
 
-  python waf -j1
+.. code:: console
+
+    $ python waf -j1
 
 Other useful options are:
 

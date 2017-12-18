@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -56,6 +58,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -92,7 +95,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rationale.html">Design rationale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="waf.html">Introduction to Waf</a></li>
@@ -120,8 +126,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Templates for reproducible research projects</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Templates for reproducible research projects</a>
+        
       </nav>
 
 
@@ -130,23 +138,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Organisation</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Organisation</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/organisation.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/organisation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -168,14 +193,14 @@
 </li>
 <li><p class="first">All outputs are constructed in the <em>bld</em> directory.</p>
 </li>
-<li><p class="first">The other objects in square brackets are put there during Waf&#8217;s install phase, so that they can be opened easily (paper, presentation, documentation).</p>
+<li><p class="first">The other objects in square brackets are put there during Waf’s install phase, so that they can be opened easily (paper, presentation, documentation).</p>
 </li>
 <li><p class="first">The remainder is made up of objects related to Waf:</p>
 <blockquote>
 <div><ul class="simple">
 <li><em>waf.py</em> is the file that starts up Waf (you will never need to change it).</li>
 <li><em>wscript</em> is the main entry point for the instructions we give to Waf.</li>
-<li><em>.mywaflib</em> contains Waf&#8217;s internals.</li>
+<li><em>.mywaflib</em> contains Waf’s internals.</li>
 </ul>
 </div></blockquote>
 </li>
@@ -191,7 +216,7 @@
 <li><p class="first">The directory <em>root/src</em> contains many more subdirectories:</p>
 <blockquote>
 <div><ul class="simple">
-<li><em>original_data</em> is the place to store the data in its raw form, as downloaded / transcribed / ... The original data should <strong>never</strong> be modified and saved under the same name.</li>
+<li><em>original_data</em> is the place to store the data in its raw form, as downloaded / transcribed / … The original data should <strong>never</strong> be modified and saved under the same name.</li>
 <li><em>model_code</em> contains source files that might differ by model and that are potentially used at various steps of the analysis.</li>
 <li><em>model_specs</em> contains <a class="reference external" href="http://www.json.org/">JSON</a> files with model specifications. The choice of JSON is motivated by the attempt to be language-agnostic: JSON is quite expressive and there are parsers for nearly all languages (for Stata there is a converter in the <em>wscript</em> file of the Stata version of the template)</li>
 <li><em>library</em> provides code that may be used by different steps of the analysis. Little code snippets for input / output or stuff that is not directly related to the model would go here. The distinction from the <em>model_code</em> directory is a bit arbitrary, but I have found it useful in the past.</li>
@@ -229,7 +254,7 @@
 </li>
 </ul>
 </div></blockquote>
-<p>The project template combines the best of both worlds by requiring you to specify relative paths for all often-accessed locations in the main <em>wscript</em> file. These are then used throughout the project template &#8211; both in the <em>wscript</em> files and in any substantial code. The next sections show how to specify them and how to use them in different circumstances.</p>
+<p>The project template combines the best of both worlds by requiring you to specify relative paths for all often-accessed locations in the main <em>wscript</em> file. These are then used throughout the project template – both in the <em>wscript</em> files and in any substantial code. The next sections show how to specify them and how to use them in different circumstances.</p>
 </div>
 <div class="section" id="specifying-project-paths-in-the-main-wscript-file">
 <h2>Specifying project paths in the main <em>wscript</em> file<a class="headerlink" href="#specifying-project-paths-in-the-main-wscript-file" title="Permalink to this headline">¶</a></h2>
@@ -270,7 +295,7 @@
 <li><strong>final</strong> → <strong>OUT_FINAL</strong>, <strong>OUT_FIGURES</strong>, <strong>OUT_TABLES</strong></li>
 </ol>
 </div></blockquote>
-<p>In addition, there are the &#8220;special&#8221; input directories <em>library</em>, <em>model_code</em>, and <em>model_specs</em>, of course.</p>
+<p>In addition, there are the “special” input directories <em>library</em>, <em>model_code</em>, and <em>model_specs</em>, of course.</p>
 </div>
 <div class="section" id="usage-of-the-project-paths-within-wscript-files">
 <h2>Usage of the project paths within <em>wscript</em> files<a class="headerlink" href="#usage-of-the-project-paths-within-wscript-files" title="Permalink to this headline">¶</a></h2>
@@ -289,7 +314,7 @@
 <dd><p>Return the relative path to os.path.join(<em>args</em>) in the directory
 PROJECT_PATHS[pp_key] as seen from ctx.path (i.e. the directory of the
 current wscript).</p>
-<p>Use this to get the relative path&#8212;as needed by Waf&#8212;to a file in one
+<p>Use this to get the relative path—as needed by Waf—to a file in one
 of the directory trees defined in the PROJECT_PATHS dictionary above.</p>
 </dd></dl>
 
@@ -346,21 +371,24 @@ of the directory trees defined in the PROJECT_PATHS dictionary above.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ppj</span><span class="p">(</span><span class="s2">&quot;OUT_ANALYSIS&quot;</span><span class="p">,</span> <span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;schelling_</span><span class="si">{}</span><span class="s2">.log&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model_name</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>When you need to change the paths for whatever reason, you just need to updated them once in the main <em>wscript</em> file; everything else will work automatically. Even if you need to change the keys &#8211; e.g. because you want to break the <em>analysis</em> step into two &#8211; you can easiliy search and replace <em>OUT_ANALYSIS</em> in the entire project.</p>
+<p>When you need to change the paths for whatever reason, you just need to updated them once in the main <em>wscript</em> file; everything else will work automatically. Even if you need to change the keys – e.g. because you want to break the <em>analysis</em> step into two – you can easiliy search and replace <em>OUT_ANALYSIS</em> in the entire project.</p>
 </div>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting started" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="waf.html" class="btn btn-neutral" title="Introduction to Waf" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="waf.html" class="btn btn-neutral" title="Introduction to Waf" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -394,13 +422,14 @@ of the directory trees defined in the PROJECT_PATHS dictionary above.</p>
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
