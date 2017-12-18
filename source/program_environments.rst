@@ -12,10 +12,6 @@ The solution is to have isolated environments on a per-project basis. `Conda env
 Basic steps
 ===========
 
-Before you start, you have to install the latest Anaconda distribution from `https://www.anaconda.com/download/`_.
-
-During the installation process, tick the box for updating the installation directory and make sure there are no spaces in the path.
-
 The templates come with a script which handles creating, activating and updating of environments. After cloning and changing to the project directory, you can run
 
 **(Mac, Linux)**::
