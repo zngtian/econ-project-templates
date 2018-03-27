@@ -61,7 +61,7 @@ Specifying dependencies and the build phase
 
 Let us go step-by-step through the entire dependency graph of the project from the section on :ref:`DAG's <dag_s>`, which is reproduced here for convenience:
 
-.. figure:: ../../../bld/examples/schelling_dependencies.png
+.. figure:: ../../../bld/examples/stata_model_dependencies.png
    :width: 50em
 
 Remember the colors of the edges follow the step of the analysis; we will split  our description along the same lines. First, we need to show how to keep the Waf code in separate directories (else it would become quickly unmanageable).
