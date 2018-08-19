@@ -37,7 +37,7 @@ def build(ctx):
     ctx.add_group()
 
     schelling_trunks = [
-        'schelling_dependencies',
+        'stata_model_dependencies',
         'schelling_dependencies_data_mgmt',
         'schelling_dependencies_main',
         'schelling_dependencies_final',
