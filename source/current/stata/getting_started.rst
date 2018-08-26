@@ -9,16 +9,8 @@ Basic steps
 
 The basic steps are very easy:
 
-    #. If you are familiar with Git, clone the `econ-project-templates repository <https://github.com/hmgaudecker/econ-project-templates>`_ and switch to the branch named after the main language in your project.
+    #. Go to `econ-project-templates repository <https://github.com/hmgaudecker/econ-project-templates/releases>`_ and download the latest release in the main language of your project.
 
-       Else, you can use these links:
-
-       * `Template for Python-based projects <https://github.com/hmgaudecker/econ-project-templates/archive/python.zip>`_
-       * `Template for Matlab-based projects <https://github.com/hmgaudecker/econ-project-templates/archive/matlab.zip>`_
-       * `Template for Stata-based projects <https://github.com/hmgaudecker/econ-project-templates/archive/stata.zip>`_
-       * `Template for R-based projects <https://github.com/hmgaudecker/econ-project-templates/archive/R.zip>`_
-      
-       In case you want to mix languages, you can always check the examples from a different template.
     #. Follow the steps in the *README.md* file in the root directory of the project template that you downloaded. This will make sure that the basic setup is working on your machine.
 
 

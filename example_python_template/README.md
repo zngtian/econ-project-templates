@@ -21,7 +21,7 @@ Full documentation
 Getting started (Python-based project)
 --------------------------------------
 
-1. Clone the project template repository (or download the [zip file](https://github.com/hmgaudecker/econ-project-templates/archive/python.zip) and copy its contents to the place on your machine where you want the resulting project to live, e.g.
+1. Go to [releases](https://github.com/hmgaudecker/econ-project-templates/releases) and download the latest release in the main language of your project. Copy its contents to the place on your machine where you want the resulting project to live, e.g.
 
         C:\Projects\structural-retirement-model\
 
