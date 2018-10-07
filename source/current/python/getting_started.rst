@@ -9,9 +9,15 @@ Basic steps
 
 The basic steps are very easy:
 
-    #. Go to `econ-project-templates repository <https://github.com/hmgaudecker/econ-project-templates/releases>`_ and download the latest release in the main language of your project.
+    #. Install cookiecutter on your system
 
-    #. Follow the steps in the *README.md* file in the root directory of the project template that you downloaded. This will make sure that the basic setup is working on your machine.
+            $ pip install cookiecutter
+
+    #. and download the template with:
+
+            $ cookiecutter https://github.com/hmgaudecker/econ-project-templates.git --checkout cookie-devel
+
+    #. Answer the prompts and your personalized template is installed in the current folder
 
 Starting a new project
 ======================
