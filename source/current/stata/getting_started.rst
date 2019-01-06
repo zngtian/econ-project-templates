@@ -9,15 +9,15 @@ Basic steps
 
 The basic steps are very easy:
 
-    #. Go to `econ-project-templates repository <https://github.com/hmgaudecker/econ-project-templates/releases>`_ and download the latest release in the main language of your project.
+    #. Go to `econ-project-templates repository <https://github.com/hmgaudecker/econ-project-templates/tree/cookie_template>`_ and follow the steps in the *README.md* file.
 
-    #. Follow the steps in the *README.md* file in the root directory of the project template that you downloaded. This will make sure that the basic setup is working on your machine.
+    #. You will download the latest release of the template using cookiecutter which enables personalized installations.
 
 
 Starting a new project
 ======================
 
-Your general strategy should be one of **divide and conquer**. If you are not used to thinking in conputer science / software engineering terms, it will be hard to wrap your head around a lot of the things going on. So write one bit of code at a time, understand what is going on, and move on.
+Your general strategy should be one of **divide and conquer**. If you are not used to thinking in computer science / software engineering terms, it will be hard to wrap your head around a lot of the things going on. So write one bit of code at a time, understand what is going on, and move on.
 
 
 #. I suggest you leave the examples in place.
