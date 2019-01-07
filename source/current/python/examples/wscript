@@ -2,11 +2,10 @@ import os
 
 
 def bld_examples(ctx, *args):
-    return ctx.path_to(ctx, 'BLD_EXAMPLES', *args)
+    return ctx.path_to(ctx, 'BLD_EXAMPLES', 'python', *args)
 
 
 def build(ctx):
-
 
     model_graphs = [
         'steps_only_full.png',
@@ -55,7 +54,7 @@ def build(ctx):
         for g in graph_types:
             fn = '{}.{}'.format(f, g)
             src = os.path.join(ctx.path.get_bld().abspath(), fn)
-            tgt = os.path.join(ctx.env.PROJECT_PATHS['BLD_EXAMPLES'].abspath(), fn)
+            tgt = os.path.join(ctx.env.PROJECT_PATHS['BLD_EXAMPLES'].abspath(), 'python', fn)
 
             # LaTeX does not create a node for png files.
             if g == 'png':
@@ -73,4 +72,3 @@ def build(ctx):
             )
 
     ctx.add_group()
-

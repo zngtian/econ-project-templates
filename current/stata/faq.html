@@ -24,20 +24,12 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Tutorial: Templates for reproducible research projects" href="index.html"/>
-        <link rel="next" title="References" href="zreferences.html"/>
-        <link rel="prev" title="Project-specific Program Environments" href="program_environments.html"/>
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="zreferences.html" />
+    <link rel="prev" title="Project-specific Program Environments" href="program_environments.html" />
  
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -56,7 +48,7 @@
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -107,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="program_environments.html">Project-specific Program Environments</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Answered Questions / Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#latex-waf">LaTeX &amp; Waf</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#error-when-calling-biber-check-xxx-blg-for-errors"><code class="docutils literal"><span class="pre">'error</span> <span class="pre">when</span> <span class="pre">calling</span> <span class="pre">biber,</span> <span class="pre">check</span> <span class="pre">xxx.blg</span> <span class="pre">for</span> <span class="pre">errors'</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-when-calling-biber-check-xxx-blg-for-errors"><code class="docutils literal notranslate"><span class="pre">'error</span> <span class="pre">when</span> <span class="pre">calling</span> <span class="pre">biber,</span> <span class="pre">check</span> <span class="pre">xxx.blg</span> <span class="pre">for</span> <span class="pre">errors'</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#biber-on-64-bit-miktex">Biber on 64-bit MikTeX</a></li>
 </ul>
 </li>
@@ -136,7 +128,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Templates for reproducible research projects</a>
@@ -144,9 +136,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -193,22 +186,22 @@
 <div class="section" id="latex-waf">
 <h2>LaTeX &amp; Waf<a class="headerlink" href="#latex-waf" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="error-when-calling-biber-check-xxx-blg-for-errors">
-<h3><code class="docutils literal"><span class="pre">'error</span> <span class="pre">when</span> <span class="pre">calling</span> <span class="pre">biber,</span> <span class="pre">check</span> <span class="pre">xxx.blg</span> <span class="pre">for</span> <span class="pre">errors'</span></code><a class="headerlink" href="#error-when-calling-biber-check-xxx-blg-for-errors" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">'error</span> <span class="pre">when</span> <span class="pre">calling</span> <span class="pre">biber,</span> <span class="pre">check</span> <span class="pre">xxx.blg</span> <span class="pre">for</span> <span class="pre">errors'</span></code><a class="headerlink" href="#error-when-calling-biber-check-xxx-blg-for-errors" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>This is a well-known bug in biber that occurs occasionally. Nicely explained <a class="reference external" href="http://tex.stackexchange.com/questions/140814/biblatex-biber-fails-with-a-strange-error-about-missing-recode-data-xml-file">here</a>.</p>
 <p>Short excerpt from LaTeX Stack Exchange for the fix:</p>
 <blockquote>
 <div><p>You need to delete the relevant cache folders and compile your document again. You can find the location of the cache folder by looking at the .blg file, or by using the command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">biber</span> <span class="o">--</span><span class="n">cache</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">biber</span> <span class="o">--</span><span class="n">cache</span>
 </pre></div>
 </div>
 <p>On Linux and Mac, this can be combined to delete the offending folder in one command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>rm -rf `biber --cache`
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rm -rf `biber --cache`
 </pre></div>
 </div>
 </div></blockquote>
 <p>In my experience, it helps to run waf on only one core for the first time you compile multiple LaTeX documents (once Biber’s cache is built correctly, you can do this in parallel again):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">waf</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">j1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">waf</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">j1</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -218,20 +211,20 @@
 <blockquote>
 <div><p>There have been mulitple issues of with biber on Windows, sometimes leading to strange error messages from Python’s subprocess module (e.g., “file not found” errors). Apparently, current 64-bit MikTeX distributions do not contain Biber. Two possible fixes:</p>
 <ul>
-<li><p class="first"><strong>Recommended:</strong> In the main <code class="docutils literal"><span class="pre">wscript</span></code> file, replace the line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ctx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;biber&#39;</span><span class="p">)</span>
+<li><p class="first"><strong>Recommended:</strong> In the main <code class="docutils literal notranslate"><span class="pre">wscript</span></code> file, replace the line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ctx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;biber&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>by:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ctx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;tex&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ctx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;tex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In <code class="docutils literal"><span class="pre">src/paper/research_paper.tex</span></code> and <code class="docutils literal"><span class="pre">src/paper/research_pres_30min.tex</span></code>, replace:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">backend</span><span class="o">=</span><span class="n">biber</span>
+<p>In <code class="docutils literal notranslate"><span class="pre">src/paper/research_paper.tex</span></code> and <code class="docutils literal notranslate"><span class="pre">src/paper/research_pres_30min.tex</span></code>, replace:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">backend</span><span class="o">=</span><span class="n">biber</span>
 </pre></div>
 </div>
 <p>by:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">backend</span><span class="o">=</span><span class="n">bibtex</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">backend</span><span class="o">=</span><span class="n">bibtex</span>
 </pre></div>
 </div>
 </li>
@@ -247,11 +240,11 @@
 <p>In the context of these project templates, there are just two issues to consider.</p>
 <div class="section" id="debugging-wscript-files">
 <h3>Debugging wscript files<a class="headerlink" href="#debugging-wscript-files" title="Permalink to this headline">¶</a></h3>
-<p>Sometimes it is helpful to debug your build code directly. As the wscript files are just pure Python code Spyder can handle them in principle. The tricky bit is to make Spyder recognise the them as Python scripts – usually it just uses the extension <code class="docutils literal"><span class="pre">.py</span></code> to infer that fact. As you cannot simply add this extension to wscript files, you must tell Spyder inside the wscript file using a so-called “shebang”. Simply add the following line as the first thing to all your wscripts:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#! python</span>
+<p>Sometimes it is helpful to debug your build code directly. As the wscript files are just pure Python code Spyder can handle them in principle. The tricky bit is to make Spyder recognise the them as Python scripts – usually it just uses the extension <code class="docutils literal notranslate"><span class="pre">.py</span></code> to infer that fact. As you cannot simply add this extension to wscript files, you must tell Spyder inside the wscript file using a so-called “shebang”. Simply add the following line as the first thing to all your wscripts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#! python</span>
 </pre></div>
 </div>
-<p>You can then set breakpoints inside your wscript files and debug them by running waf.py from inside spyder (just make sure you ran <code class="docutils literal"><span class="pre">python</span> <span class="pre">waf.py</span> <span class="pre">configure</span></code> beforehand).</p>
+<p>You can then set breakpoints inside your wscript files and debug them by running waf.py from inside spyder (just make sure you ran <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">waf.py</span> <span class="pre">configure</span></code> beforehand).</p>
 </div>
 <div class="section" id="setting-the-pythonpath">
 <h3>Setting the PYTHONPATH<a class="headerlink" href="#setting-the-pythonpath" title="Permalink to this headline">¶</a></h3>
@@ -260,26 +253,26 @@
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/spyder_pythonpath.png"><img alt="_images/spyder_pythonpath.png" src="_images/spyder_pythonpath.png" style="width: 18cm;" /></a>
 </div></blockquote>
-<p>Any <code class="docutils literal"><span class="pre">ImportErrors</span></code> are likely due to this not being done correctly. Note that you <strong>must</strong> set the run configuration (F6 or select “Run” from the menu bar and then “Configure”) to “Execute in a new dedicated Python console”.</p>
+<p>Any <code class="docutils literal notranslate"><span class="pre">ImportErrors</span></code> are likely due to this not being done correctly. Note that you <strong>must</strong> set the run configuration (F6 or select “Run” from the menu bar and then “Configure”) to “Execute in a new dedicated Python console”.</p>
 </div>
 </div>
 <div class="section" id="stata-packages">
 <span id="id1"></span><h2>Stata packages<a class="headerlink" href="#stata-packages" title="Permalink to this headline">¶</a></h2>
-<p>Note that when you include (or input) the file <code class="docutils literal"><span class="pre">project_paths.do</span></code> in your Stata script, the system directories get changed. <strong>This means that Stata will not find any packages you installed system-wide anymore.</strong> This is desired behaviour to ensure that you (and your coauthors) run the same versions of different packages that you installed via <code class="docutils literal"><span class="pre">ssc</span></code> or the like. The project template comes with a few of them, see <em>src/library/stata/ado_ext</em> in the stata branch.</p>
+<p>Note that when you include (or input) the file <code class="docutils literal notranslate"><span class="pre">project_paths.do</span></code> in your Stata script, the system directories get changed. <strong>This means that Stata will not find any packages you installed system-wide anymore.</strong> This is desired behaviour to ensure that you (and your coauthors) run the same versions of different packages that you installed via <code class="docutils literal notranslate"><span class="pre">ssc</span></code> or the like. The project template comes with a few of them, see <em>src/library/stata/ado_ext</em> in the stata branch.</p>
 <div class="section" id="adding-additional-stata-packages-to-a-project">
 <h3>Adding additional Stata packages to a project<a class="headerlink" href="#adding-additional-stata-packages-to-a-project" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Open a Stata command line session and change to the project root directory</li>
-<li>Type <code class="docutils literal"><span class="pre">include</span> <span class="pre">bld/project_paths</span></code></li>
-<li>Type <code class="docutils literal"><span class="pre">sysdir</span></code> and make sure that the <code class="docutils literal"><span class="pre">PLUS</span></code> and <code class="docutils literal"><span class="pre">PERSONAL</span></code> directories point to subdirectories of the project.</li>
-<li>Install your package via ssc, say <code class="docutils literal"><span class="pre">ssc</span> <span class="pre">install</span> <span class="pre">tabout</span></code></li>
+<li>Type <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">bld/project_paths</span></code></li>
+<li>Type <code class="docutils literal notranslate"><span class="pre">sysdir</span></code> and make sure that the <code class="docutils literal notranslate"><span class="pre">PLUS</span></code> and <code class="docutils literal notranslate"><span class="pre">PERSONAL</span></code> directories point to subdirectories of the project.</li>
+<li>Install your package via ssc, say <code class="docutils literal notranslate"><span class="pre">ssc</span> <span class="pre">install</span> <span class="pre">tabout</span></code></li>
 </ol>
 </div>
 </div>
 <div class="section" id="stata-failure-filenotfounderror">
 <span id="stata-failure-check-erase-log-file"></span><h2>Stata failure: FileNotFoundError<a class="headerlink" href="#stata-failure-filenotfounderror" title="Permalink to this headline">¶</a></h2>
 <p>The following failure:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>[21/39] Running  [Stata] -e -q do src/data_management/add_variables.do add_variables
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[21/39] Running  [Stata] -e -q do src/data_management/add_variables.do add_variables
 Waf: Leaving directory `/Users/xxx/econ/econ-project templates/bld&#39;
 Build failed
 Traceback (most recent call last):
@@ -292,28 +285,26 @@ Traceback (most recent call last):
 FileNotFoundError: [Errno 2] No such file or directory: &#39;/Users/xxx/econ/econ-project templates/bld/add_variables.log&#39;
 </pre></div>
 </div>
-<p>has a simple solution: <strong>Get rid of all spaces in the path to the project.</strong> (i.e., <code class="docutils literal"><span class="pre">econ-project-templates</span></code> instead of <code class="docutils literal"><span class="pre">econ-project</span> <span class="pre">templates</span></code> in this case). To do so, do <strong>not</strong> rename your user directory, that will cause havoc. Rather move the project folder to a different location.</p>
+<p>has a simple solution: <strong>Get rid of all spaces in the path to the project.</strong> (i.e., <code class="docutils literal notranslate"><span class="pre">econ-project-templates</span></code> instead of <code class="docutils literal notranslate"><span class="pre">econ-project</span> <span class="pre">templates</span></code> in this case). To do so, do <strong>not</strong> rename your user directory, that will cause havoc. Rather move the project folder to a different location.</p>
 <p>I have not been able to get Stata working with spaces in the path in batch mode, so this has nothing to do with Python/Waf. If anybody finds a solution, please let me know.</p>
 </div>
 <div class="section" id="stata-failure-missing-file">
 <h2>Stata failure: missing file<a class="headerlink" href="#stata-failure-missing-file" title="Permalink to this headline">¶</a></h2>
 <p>If you see this error:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>[21/39] Running  [Stata] -e -q do src/data_management/add_variables.do add_variables
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[21/39] Running  [Stata] -e -q do src/data_management/add_variables.do add_variables
 Waf: Leaving directory `/Users/xxx/econ/econ-project/templates/bld&#39;
 Build failed
 -&gt; missing file: &#39;/Users/xxx/econ/econ-project/templates/bld/add_variables.log&#39;
 </pre></div>
 </div>
-<p>run <code class="docutils literal"><span class="pre">python</span> <span class="pre">waf.py</span> <span class="pre">configure</span></code> again and check that you have a license for the Stata version that is found (the Stata tool just checks availability top-down, i.e., MP-SE-IC, in case an MP-Version is found and you just have a license for SE, Stata will silently refuse to start up).</p>
+<p>run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">waf.py</span> <span class="pre">configure</span></code> again and check that you have a license for the Stata version that is found (the Stata tool just checks availability top-down, i.e., MP-SE-IC, in case an MP-Version is found and you just have a license for SE, Stata will silently refuse to start up).</p>
 <p>The solution is to remove all versions of Stata from its executable directory (e.g., /usr/local/stata) that cost more than your license did.</p>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -331,11 +322,11 @@ Build failed
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2013-, Hans-Martin von Gaudecker.
+        &copy; Copyright 2013-, Hans-Martin von Gaudecker
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -350,36 +341,24 @@ Build failed
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-  
  
 <div class="footer">This page uses <a href="http://analytics.google.com/">
 Google Analytics</a> to collect statistics. You can disable it by blocking

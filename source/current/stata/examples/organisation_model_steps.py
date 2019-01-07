@@ -18,7 +18,7 @@ from bld.project_paths import project_paths_join
 
 
 def path_to(filename):
-    return project_paths_join('BLD_EXAMPLES', filename)
+    return project_paths_join('BLD_EXAMPLES', 'stata', filename)
 
 
 EXPORT_TYPE = 'png'

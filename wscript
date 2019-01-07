@@ -80,10 +80,6 @@ def build(ctx):
     ctx.env.PROJECT_PATHS = set_project_paths(ctx)
     ctx.path_to = path_to
     ctx(features='write_project_paths', target='project_paths.py')
-
-    ctx.recurse('example_python_template/src/data_management')
-    ctx.recurse('example_python_template/src/analysis')
-    ctx.recurse('example_python_template/src/final')
     ctx.add_group()
 
     ctx.recurse('source')

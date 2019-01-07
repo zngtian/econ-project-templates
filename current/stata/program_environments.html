@@ -24,20 +24,12 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Tutorial: Templates for reproducible research projects" href="index.html"/>
-        <link rel="next" title="Frequently Answered Questions / Troubleshooting" href="faq.html"/>
-        <link rel="prev" title="Getting started" href="getting_started.html"/>
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frequently Answered Questions / Troubleshooting" href="faq.html" />
+    <link rel="prev" title="Getting started" href="getting_started.html" />
  
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -56,7 +48,7 @@
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -126,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Templates for reproducible research projects</a>
@@ -134,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -186,46 +179,46 @@
 <h2>Setting up a new environment<a class="headerlink" href="#setting-up-a-new-environment" title="Permalink to this headline">¶</a></h2>
 <p>The templates come with a script which handles creating, activating and updating of environments. After cloning and changing to the project directory, you can run</p>
 <p><strong>(Mac, Linux)</strong></p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ source set-env.sh
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ source set-env.sh
 </pre></div>
 </div>
 <p>or <strong>(Windows)</strong></p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ set-env.bat
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ set-env.bat
 </pre></div>
 </div>
 <p>in your shell to create a new environment with the same name as your project folder.</p>
-<p>The script will look at the <em>.environment.[OS].yml</em> file, where ‘OS’ is your current operating system <span class="math">\(\in\;\{\text{linux, osx, windows}\}\)</span> , for conda and pip packages and install those in the newly created Python environment.</p>
+<p>The script will look at the <em>.environment.[OS].yml</em> file, where ‘OS’ is your current operating system <span class="math notranslate nohighlight">\(\in\;\{\text{linux, osx, windows}\}\)</span> , for conda and pip packages and install those in the newly created Python environment.</p>
 </div>
 <div class="section" id="using-the-environment">
 <h2>Using the environment<a class="headerlink" href="#using-the-environment" title="Permalink to this headline">¶</a></h2>
 <p>Every time you go back to the project, activate the project in the same way before running Waf. That is, go to the project root directory, run:</p>
 <p><strong>(Mac, Linux)</strong></p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ source set-env.sh
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ source set-env.sh
 </pre></div>
 </div>
 <p>or <strong>(Windows)</strong></p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ set-env.bat
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ set-env.bat
 </pre></div>
 </div>
 </div>
 <div class="section" id="updating-packages">
 <h2>Updating packages<a class="headerlink" href="#updating-packages" title="Permalink to this headline">¶</a></h2>
-<p>Make sure you activated the environment by <code class="docutils literal"><span class="pre">source</span> <span class="pre">set-env.sh</span></code> / <code class="docutils literal"><span class="pre">set-env.bat</span></code>. Then use conda or pip directly:</p>
-<p><code class="docutils literal"><span class="pre">conda</span> <span class="pre">update</span> <span class="pre">[package]</span></code> or <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">[package]</span></code></p>
-<p>For updating conda all packages, replace <code class="docutils literal"><span class="pre">[package]</span></code> by <code class="docutils literal"><span class="pre">--all</span></code>.</p>
+<p>Make sure you activated the environment by <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">set-env.sh</span></code> / <code class="docutils literal notranslate"><span class="pre">set-env.bat</span></code>. Then use conda or pip directly:</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">update</span> <span class="pre">[package]</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">[package]</span></code></p>
+<p>For updating conda all packages, replace <code class="docutils literal notranslate"><span class="pre">[package]</span></code> by <code class="docutils literal notranslate"><span class="pre">--all</span></code>.</p>
 </div>
 <div class="section" id="installing-additional-packages">
 <h2>Installing additional packages<a class="headerlink" href="#installing-additional-packages" title="Permalink to this headline">¶</a></h2>
 <p>To list installed packages, type</p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ conda list
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda list
 </pre></div>
 </div>
 <p>If you want to add a package to your environment, run</p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ conda install [package]
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install [package]
 </pre></div>
 </div>
 <p>or</p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ pip install [package]
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install [package]
 </pre></div>
 </div>
 <p><strong>Choosing between conda and pip</strong></p>
@@ -235,15 +228,15 @@
 <h2>Saving your environment<a class="headerlink" href="#saving-your-environment" title="Permalink to this headline">¶</a></h2>
 <p>After updating or changing your environment you should save the status in the respective <em>.environment.OS.yml</em> file to avoid version conflicts and maintain coherent environments in a project with multiple collaborators. Just make sure your environment is activated and run the following in the project’s root directory:</p>
 <p><strong>(Linux)</strong></p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ conda env export -f .environment.linux.yml
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda env export -f .environment.linux.yml
 </pre></div>
 </div>
 <p><strong>(Mac)</strong></p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ conda env export -f .environment.osx.yml
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda env export -f .environment.osx.yml
 </pre></div>
 </div>
 <p><strong>(Windows)</strong></p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ conda env export -f .environment.windows.yml
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda env export -f .environment.windows.yml
 </pre></div>
 </div>
 <p>After exporting, manually delete the last line in the environment file, as it is system specific.</p>
@@ -251,7 +244,7 @@
 <div class="section" id="information-about-your-conda-environments">
 <h2>Information about your conda environments<a class="headerlink" href="#information-about-your-conda-environments" title="Permalink to this headline">¶</a></h2>
 <p>For listing your installed conda environments, type</p>
-<div class="code console highlight-default"><div class="highlight"><pre><span></span>$ conda info --envs
+<div class="code console highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda info --envs
 </pre></div>
 </div>
 <p>The currently activated one will be marked.</p>
@@ -260,9 +253,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -280,11 +271,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2013-, Hans-Martin von Gaudecker.
+        &copy; Copyright 2013-, Hans-Martin von Gaudecker
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -299,36 +290,24 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-  
  
 <div class="footer">This page uses <a href="http://analytics.google.com/">
 Google Analytics</a> to collect statistics. You can disable it by blocking

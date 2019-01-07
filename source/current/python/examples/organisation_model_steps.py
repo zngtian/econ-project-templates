@@ -18,7 +18,7 @@ from bld.project_paths import project_paths_join
 
 
 def path_to(filename):
-    return project_paths_join('BLD_EXAMPLES', filename)
+    return project_paths_join('BLD_EXAMPLES', 'python', filename)
 
 
 EXPORT_TYPE = 'png'
@@ -203,4 +203,3 @@ create_fig(
     x_items=step_shapes['select'],
     y_items=model_shapes['None']
 )
-    
