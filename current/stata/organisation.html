@@ -272,15 +272,12 @@
     <span class="n">pp</span><span class="p">[</span><span class="s2">&quot;OUT_TABLES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{out}</span><span class="s2">/out/tables&quot;</span>
     <span class="n">pp</span><span class="p">[</span><span class="s2">&quot;LIBRARY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;src/library&quot;</span>
 
-
     <span class="c1"># Stata&#39;s adopaths get special treatment.</span>
     <span class="n">lib</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">&quot;LIBRARY&quot;</span><span class="p">]</span>
     <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;ADO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;ADO&#39;</span><span class="p">][</span><span class="s1">&#39;PERSONAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lib</span><span class="p">,</span> <span class="s1">&#39;stata/ado_ext/personal&#39;</span><span class="p">)</span>
     <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;ADO&#39;</span><span class="p">][</span><span class="s1">&#39;PLUS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lib</span><span class="p">,</span> <span class="s1">&#39;stata/ado_ext/plus&#39;</span><span class="p">)</span>
     <span class="n">pp</span><span class="p">[</span><span class="s1">&#39;ADO&#39;</span><span class="p">][</span><span class="s1">&#39;LOCAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lib</span><span class="p">,</span> <span class="s1">&#39;stata&#39;</span><span class="p">)</span>
-
-
 
     <span class="c1"># Convert the directories into Waf nodes.</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">pp</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -308,6 +305,15 @@
 <div class="section" id="usage-of-the-project-paths-within-wscript-files">
 <h2>Usage of the project paths within <em>wscript</em> files<a class="headerlink" href="#usage-of-the-project-paths-within-wscript-files" title="Permalink to this headline">¶</a></h2>
 <p>The first thing to do is to make these project paths available in <em>wscript</em> files further down the directory hierarchy. We do so in the <em>build</em> function of <em>root/wscript</em>; the relevant lines are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">ctx</span><span class="o">.</span><span class="n">find_program</span><span class="p">(</span><span class="s2">&quot;dot&quot;</span><span class="p">)</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;biber&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">PROJECT_PATHS</span> <span class="o">=</span> <span class="n">set_project_paths</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="n">path_to</span> <span class="o">=</span> <span class="n">path_to</span>
+</pre></div>
+</div>
 <p>The first line of the function attaches the project paths we defined in the previous section to the build context object. The second attaches a convenience function to the same object, which will do all the heavy lifting. You do not need to care about its internals, only about its interface:</p>
 <dl class="function">
 <dt id="ctx.path_to">

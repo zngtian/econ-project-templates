@@ -97,7 +97,7 @@ Usage of the project paths within *wscript* files
 The first thing to do is to make these project paths available in *wscript* files further down the directory hierarchy. We do so in the *build* function of *root/wscript*; the relevant lines are:
 
 .. literalinclude:: example_project/wscript
-    :start-after: ctx.load('write_project_headers')
+    :start-after: ctx.load("write_project_headers")
     :end-before: # Generate header
 
 The first line of the function attaches the project paths we defined in the previous section to the build context object. The second attaches a convenience function to the same object, which will do all the heavy lifting. You do not need to care about its internals, only about its interface:
