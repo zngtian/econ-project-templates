@@ -61,7 +61,7 @@ Specifying dependencies and the build phase
 
 Let us go step-by-step through the entire dependency graph of the project from the section on :ref:`DAG's <dag_s>`, which is reproduced here for convenience:
 
-.. figure:: ../../../bld/examples/stata/stata_model_dependencies.png
+.. figure:: ../../../bld/examples/stata/ajrcomment_dependencies.png
    :width: 50em
 
 Remember the colors of the edges follow the step of the analysis; we will split  our description along the same lines. First, we need to show how to keep the Waf code in separate directories (else it would become quickly unmanageable).
@@ -93,9 +93,9 @@ The same comments as before apply to what the ``ctx.recurse`` calls do. Hence yo
 The "data management" step
 --------------------------
 
-The dependency structure at this step of the analysis is particularly simple, as we have one source and one target:
+The dependency structure at this step of the analysis is particularly simple, as we have one source, one dependency and one target:
 
-.. figure:: ../../../bld/examples/stata/schelling_dependencies_data_mgmt.png
+.. figure:: ../../../bld/examples/stata/ajrcomment_dependencies_data_mgmt.png
    :width: 30em
 
 This is the entire content of the file *src/data_management/wscript*:
@@ -104,10 +104,10 @@ This is the entire content of the file *src/data_management/wscript*:
 
 The ``ctx()`` call is a shortcut for creating a **task generator**. We will be more specific about that below in the section :ref:`build_phase`. Let us look at the lines one-by-one again:
 
-  * ``features='run_py_script'`` tells Waf what **action** it needs to perform. In this case, it should run a Python script. 
-  * ``source='get_simulation_draws.py'`` tells Waf that it should perform the action on the file *get_simulation_draws.py* in the current directory.
-  * ``target=ctx.path_to(ctx, 'OUT_DATA', 'initial_locations.csv')`` tells Waf that the specified action will produce a file called *initial_locations.csv* in a directory that is determined in the ``ctx.path_to()``. We will examine this in detail in the :ref:`organisation` section, for now we abstract from it beyond noting that the ``OUT_DATA`` keyword refers to the directory where output data are stored. 
-  * ``name='get_simulation_draws'`` gives this task generator a name, which can be useful if we only want to produce a subset of all targets. 
+  * ``features='run_do_script'`` tells Waf what **action** it needs to perform. In this case, it should run a Stata script.
+  * ``source='add_variables.do'`` tells Waf that it should perform the action on the file *add_variables.do* in the current directory.
+  * ``target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'add_variables.log'), ctx.path_to(ctx, 'OUT_DATA', 'ajrcomment_all.dta')]`` tells Waf that the specified action will produce a file called *add_variables.log* in a directory that is determined in the ``ctx.path_to()``. Same holds for the second file *ajrcomment_all.dta* in the target list. We will examine this in detail in the :ref:`organisation` section, for now we abstract from it beyond noting that the ``OUT_DATA`` keyword refers to the directory where output data are stored.
+  * ``deps=[ctx.path_to(ctx, 'IN_DATA', 'ajrcomment.dta')]`` tells Waf that the execution of the Stata script depends on a file *ajrcomment.dta* which needs to be in a directory referenced by the keyword ``IN_DATA``.
 
 And this is it! The rest are slight variations on this procedure and straightforward generalisations thereof.
 
@@ -118,7 +118,7 @@ The "analysis" step
 
 We concentrate our discussion on the top part of the graph, i.e. the baseline model. The lower part is the exact mirror image. We have the following structure:
 
-.. figure:: ../../../bld/examples/stata/schelling_dependencies_main.png
+.. figure:: ../../../bld/examples/stata/ajrcomment_dependencies_main.png
    :width: 40em
 
 Just a reminder on the purpose of each of these files:
@@ -156,7 +156,7 @@ The "final" step
 
 Again, we concentrate on the baseline model. 
 
-.. figure:: ../../../bld/examples/stata/schelling_dependencies_final.png
+.. figure:: ../../../bld/examples/stata/ajrcomment_dependencies_final.png
    :width: 40em
 
 This step is shown here mostly for completeness, there is nothing really new in the *wscript* file:
@@ -171,7 +171,7 @@ The "paper" step
 
 The pdf with the final "paper" depends on two additional files that were not shown in the full dependency graph for legibility reasons, a reference bibliography, and a LaTeX-file with the formula for the agents' decision rule (specified in a separate file so it can be re-used in the presentation, which is omitted from the graph as well):
 
-.. figure:: ../../../bld/examples/stata/schelling_dependencies_paper.png
+.. figure:: ../../../bld/examples/stata/ajrcomment_dependencies_paper.png
    :width: 40em
 
 The corresponding file *src/paper/wscript* is particularly simple: 

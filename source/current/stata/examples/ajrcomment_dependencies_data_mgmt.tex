@@ -16,15 +16,24 @@
     draw,
     fill=brown!25
 }]
-    \node (get_simulation_draws_py) [fill=blue!15, shift={(-4, 0)}]
+
+    \node (ajrcomment_dta) [fill=blue!15, shift={(-4, 0)}]
     {
-        get\_simulation\_draws.py
+        ajrcomment.dta
     };
-    \node (initial_locations_csv) [shift={(0, 0)}]
+    \node (add_variables_do) [fill=blue!15, shift={(4, 0)}]
     {
-        initial\_locations.csv
+        add\_variables.do
     };
-    \draw[->, blue, thick] (initial_locations_csv) to (get_simulation_draws_py);
+    \node (ajrcomment_all_dta) [shift={(0, 0)}]
+    {
+        ajrcomment\_all.dta
+    };
+
+    \draw[->, blue, thick] (ajrcomment_all_dta) to (add_variables_do);
+    \draw[->, blue, thick] (ajrcomment_all_dta) to (ajrcomment_dta);
+
 \end{tikzpicture}
 
 \end{document}
+

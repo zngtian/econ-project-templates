@@ -67,7 +67,7 @@ The way to specify dependencies between data, code and tasks to perform for a co
 
 This is the dependency graph for the modified Schelling example from Stachurski and Sargent, as implemented in the Python branch of the project template:
 
-.. figure:: ../../../bld/examples/stata/stata_model_dependencies.png
+.. figure:: ../../../bld/examples/stata/ajrcomment_dependencies.png
    :width: 50em
 
 The arrows have different colors in order to distinguish the steps of the analysis, from left to right:

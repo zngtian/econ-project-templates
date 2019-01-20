@@ -36,11 +36,11 @@ def build(ctx):
     ctx.add_group()
 
     dep_trunks = [
-        'stata_model_dependencies',
-        'schelling_dependencies_data_mgmt',
-        'schelling_dependencies_main',
-        'schelling_dependencies_final',
-        'schelling_dependencies_paper'
+        'ajrcomment_dependencies',
+        'ajrcomment_dependencies_data_mgmt',
+        'ajrcomment_dependencies_main',
+        'ajrcomment_dependencies_final',
+        'ajrcomment_dependencies_paper'
     ]
 
     for f in dep_trunks + project_hierarchies_trunks:

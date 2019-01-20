@@ -16,21 +16,11 @@
     draw,
     fill=brown!25
 }]
-    %data
-    \node (ajrcomment_dta) [fill=blue!15, shift={(-4, -2)}]
-    {
-        ajrcomment.dta
-    };
-    \node (add_variables_do) [fill=blue!15, shift={(-4, 2)}]
-    {
-        add\_variables.do
-    };
     \node (ajrcomment_all_dta) [shift={(-4, 0)}]
     {
         ajrcomment\_all.dta
     };
 
-    %analysis
     \node (regression_on_indicators_do) [fill=blue!15, shift={(2, 0)}]
     {
         regression\_on\_indicators.do
@@ -53,7 +43,7 @@
     {
         baseline.do
     };
-    \node (rmconj_do) [fill=blue!15, shift={(8.5, 0)}]
+    \node (rmconj_do) [fill=blue!15, shift={(9, 0)}]
     {
         rmconj.do
     };
@@ -113,87 +103,6 @@
         second\_stage\_estimation.do
     };
 
-
-    %final
-
-    \node (figure1_mortality_do) [fill=blue!15, shift={(11.5, 0)}]
-    {
-        figure1\_mortality.do
-    };
-
-    \node (risk_mort_eps) [shift={(14, 1)}]
-    {
-        risk\_mort.eps
-    };
-    \node (gdp_mort_eps) [shift={(14, -1)}]
-    {
-        gdp\_mort.eps
-    };
-
-    \node (table1_reg_on_indicators_tex) [shift={(15, 0)}]
-    {
-        table1\_reg\_on\_indicators.tex
-    };
-
-    \node (table1_reg_on_indicators_do) [fill=blue!15, shift={(15, 2)}]
-    {
-        table1\_reg\_on\_indicators.do
-    };
-
-
-    \node (table2_first_stage_est_tex) [shift={(16, 4)}]
-    {
-        table2\_first\_stage\_est.tex
-    };
-
-    \node (table2_first_stage_est_do) [fill=blue!15, shift={(16, 3)}]
-    {
-        table2\_first\_stage\_est.do
-    };
-
-    \node (table3_second_stage_est_tex) [shift={(15, -2.5)}]
-    {
-        table3\_second\_stage\_est.tex
-    };
-
-    \node (table3_second_stage_est_do) [fill=blue!15, shift={(15, -4)}]
-    {
-        table3\_second\_stage\_est.do
-    };
-
-
-
-
-    %paper
-
-    \node (research_paper_tex) [fill=blue!15, shift={(19, 0.5)}]
-    {
-        research\_paper.tex
-    };
-
-    \node (research_paper_pdf) [shift={(19, 1.5)}]
-    {
-        research\_paper.pdf
-    };
-
-
-    \node (research_pres_30min_tex) [fill=blue!15, shift={(19, -0.5)}]
-    {
-        research\_pres\_30min.tex
-    };
-
-    \node (research_pres_30min_pdf) [shift={(19, -1.5)}]
-    {
-        research\_pres\_30min.pdf
-    };
-
-
-
-    %data
-    \draw[->, blue, thick] (ajrcomment_all_dta) to (add_variables_do);
-    \draw[->, blue, thick] (ajrcomment_all_dta) to (ajrcomment_dta);
-
-    %analysis
     \draw[->, orange, thick] (regression_on_indicators_corr_dta) to (regression_on_indicators_do);
     \draw[->, orange, thick] (regression_on_indicators_corr_dta) to (ajrcomment_all_dta);
 
@@ -227,35 +136,7 @@
     \draw[->, orange, thick] (second_stage_estimation_rmconj_dta) to (rmconj_do);
     \draw[->, orange, thick] (second_stage_estimation_rmconj_do) to (second_stage_estimation_do);
 
-
-    %final
-    \draw[->, teal, thick] (risk_mort_eps) to (ajrcomment_all_dta);
-    \draw[->, teal, thick] (gdp_mort_eps) to (ajrcomment_all_dta);
-    \draw[->, teal, thick] (risk_mort_eps) to (figure1_mortality_do);
-    \draw[->, teal, thick] (gdp_mort_eps) to (figure1_mortality_do);
-    \draw[->, teal, thick] (table1_reg_on_indicators_tex) to (regression_on_indicators_est_dta);
-    \draw[->, teal, thick] (table1_reg_on_indicators_tex) to (regression_on_indicators_corr_dta);
-    \draw[->, teal, thick] (table1_reg_on_indicators_tex) to (table1_reg_on_indicators_do);
-
-    \draw[->, teal, thick] (table2_first_stage_est_tex) to (table2_first_stage_est_do);
-    \draw[->, teal, thick] (table2_first_stage_est_tex) to (baseline_do);
-    \draw[->, teal, thick] (table2_first_stage_est_tex) to (rmconj_do);
-    \draw[->, teal, thick] (table2_first_stage_est_tex) to (first_stage_estimation_baseline_dta);
-    \draw[->, teal, thick] (table2_first_stage_est_tex) to (first_stage_estimation_rmconj_dta);
-
-    \draw[->, teal, thick] (table3_second_stage_est_tex) to (table3_second_stage_est_do);
-    \draw[->, teal, thick] (table3_second_stage_est_tex) to (baseline_do);
-    \draw[->, teal, thick] (table3_second_stage_est_tex) to (rmconj_do);
-    \draw[->, teal, thick] (table3_second_stage_est_tex) to (second_stage_estimation_baseline_dta);
-    \draw[->, teal, thick] (table3_second_stage_est_tex) to (second_stage_estimation_rmconj_dta);
-
-
-    %paper
-
-    \draw[->, red, thick] (research_paper_pdf) to (research_paper_tex);
-    \draw[->, red, thick] (research_pres_30min_pdf) to (research_pres_30min_tex);
-
-
 \end{tikzpicture}
 
 \end{document}
+
