@@ -69,7 +69,7 @@ def configure(ctx):
         pp['PROJECT_ROOT'].abspath(),
         pp['SRC_EXAMPLE_PYTHON_TEMPLATE'].abspath()
     )
-    ctx.env.PDFLATEXFLAGS = '-shell-escape'
+    ctx.env.PDFLATEXFLAGS = ['-shell-escape', '-halt-on-error']
     ctx.load('biber')
     ctx.load('run_py_script')
     ctx.load('sphinx_build')

@@ -7,11 +7,7 @@ Getting started
 Basic steps
 ===========
 
-The basic steps are very easy:
-
-    #. Go to `econ-project-templates repository <https://github.com/hmgaudecker/econ-project-templates/tree/cookie_template>`_ and follow the steps in the *README.md* file.
-
-    #. You will download the latest release of the template using cookiecutter which enables personalized installations.
+Follow the guide listed in the Readme file on the `project's main Github site <https://github.com/hmgaudecker/econ-project-templates#getting-started>`_.
 
 
 Starting a new project

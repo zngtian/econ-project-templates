@@ -7,27 +7,13 @@ Getting started
 Basic steps
 ===========
 
-The basic steps are very easy:
+Follow the guide listed in the Readme file on the `project's main Github site <https://github.com/hmgaudecker/econ-project-templates#getting-started>`_.
 
-    #. Install cookiecutter on your system.
-
-            $ pip install cookiecutter
-
-    #. And download the template with:
-
-            $ cookiecutter https://github.com/hmgaudecker/econ-project-templates/archive/v1.0.zip
-
-    #. Answer the prompts and your personalized template is installed in the current folder
-
-
-    #. Go to `econ-project-templates repository <https://github.com/hmgaudecker/econ-project-templates/tree/cookie_template>`_ and follow the steps in the *README.md* file.
-
-    #. You will download the latest release of the template using cookiecutter which enables personalized installations.
 
 Starting a new project
 ======================
 
-Your general strategy should be one of **divide and conquer**. If you are not used to thinking in conputer science / software engineering terms, it will be hard to wrap your head around a lot of the things going on. So write one bit of code at a time, understand what is going on, and move on.
+Your general strategy should be one of **divide and conquer**. If you are not used to thinking in computer science / software engineering terms, it will be hard to wrap your head around a lot of the things going on. So write one bit of code at a time, understand what is going on, and move on.
 
 
 #. I suggest you leave the examples in place.
