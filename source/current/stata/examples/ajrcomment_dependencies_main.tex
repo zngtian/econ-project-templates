@@ -21,18 +21,6 @@
         ajrcomment\_all.dta
     };
 
-    \node (regression_on_indicators_do) [fill=blue!15, shift={(2, 0)}]
-    {
-        regression\_on\_indicators.do
-    };
-    \node (regression_on_indicators_corr_dta) [shift={(0, 2)}]
-    {
-        regression\_on\_indicators\_corr.dta
-    };
-    \node (regression_on_indicators_est_dta) [shift={(0, -2)}]
-    {
-        regression\_on\_indicators\_est.dta
-    };
 
 
     \node (geography_do) [fill=blue!15, shift={(5, 0)}]
@@ -43,36 +31,6 @@
     {
         baseline.do
     };
-    \node (rmconj_do) [fill=blue!15, shift={(9, 0)}]
-    {
-        rmconj.do
-    };
-
-
-    \node (first_stage_estimation_baseline_dta) [shift={(4.5, 2)}]
-    {
-        first\_stage\_estimation\_baseline.dta
-    };
-
-    \node (first_stage_estimation_rmconj_dta) [shift={(9, 2)}]
-    {
-        first\_stage\_estimation\_rmconj.dta
-    };
-
-    \node (first_stage_estimation_do) [fill=blue!15, shift={(6, 6)}]
-    {
-        first\_stage\_estimation.do
-    };
-
-    \node (first_stage_estimation_baseline_do) [fill=blue!15, shift={(4.5, 4)}]
-    {
-        first\_stage\_estimation\_baseline.do
-    };
-
-    \node (first_stage_estimation_rmconj_do) [fill=blue!15, shift={(9, 4)}]
-    {
-        first\_stage\_estimation\_rmconj.do
-    };
 
 
 
@@ -82,10 +40,6 @@
         second\_stage\_estimation\_baseline.dta
     };
 
-    \node (second_stage_estimation_rmconj_dta) [shift={(10, -2)}]
-    {
-        second\_stage\_estimation\_rmconj.dta
-    };
 
 
     \node (second_stage_estimation_baseline_do) [fill=blue!15, shift={(4.5, -4)}]
@@ -93,36 +47,14 @@
         second\_stage\_estimation\_baseline.do
     };
 
-    \node (second_stage_estimation_rmconj_do) [fill=blue!15, shift={(10, -4)}]
-    {
-        second\_stage\_estimation\_rmconj.do
-    };
 
     \node (second_stage_estimation_do) [fill=blue!15, shift={(6, -6)}]
     {
         second\_stage\_estimation.do
     };
 
-    \draw[->, orange, thick] (regression_on_indicators_corr_dta) to (regression_on_indicators_do);
-    \draw[->, orange, thick] (regression_on_indicators_corr_dta) to (ajrcomment_all_dta);
 
 
-    \draw[->, orange, thick] (regression_on_indicators_est_dta) to (regression_on_indicators_do);
-    \draw[->, orange, thick] (regression_on_indicators_est_dta) to (ajrcomment_all_dta);
-
-
-    \draw[->, orange, thick] (first_stage_estimation_baseline_dta) to (first_stage_estimation_baseline_do);
-    \draw[->, orange, thick] (first_stage_estimation_baseline_dta) to (geography_do);
-    \draw[->, orange, thick] (first_stage_estimation_baseline_dta) to (ajrcomment_all_dta);
-    \draw[->, orange, thick] (first_stage_estimation_baseline_dta) to (baseline_do);
-    \draw[->, orange, thick] (first_stage_estimation_baseline_do) to (first_stage_estimation_do);
-
-
-    \draw[->, orange, thick] (first_stage_estimation_rmconj_dta) to (first_stage_estimation_rmconj_do);
-    \draw[->, orange, thick] (first_stage_estimation_rmconj_dta) to (geography_do);
-    \draw[->, orange, thick] (first_stage_estimation_rmconj_dta) to (ajrcomment_all_dta);
-    \draw[->, orange, thick] (first_stage_estimation_rmconj_dta) to (rmconj_do);
-    \draw[->, orange, thick] (first_stage_estimation_rmconj_do) to (first_stage_estimation_do);
 
     \draw[->, orange, thick] (second_stage_estimation_baseline_dta) to (second_stage_estimation_baseline_do);
     \draw[->, orange, thick] (second_stage_estimation_baseline_dta) to (geography_do);
@@ -130,11 +62,6 @@
     \draw[->, orange, thick] (second_stage_estimation_baseline_dta) to (baseline_do);
     \draw[->, orange, thick] (second_stage_estimation_baseline_do) to (second_stage_estimation_do);
 
-    \draw[->, orange, thick] (second_stage_estimation_rmconj_dta) to (second_stage_estimation_rmconj_do);
-    \draw[->, orange, thick] (second_stage_estimation_rmconj_dta) to (geography_do);
-    \draw[->, orange, thick] (second_stage_estimation_rmconj_dta) to (ajrcomment_all_dta);
-    \draw[->, orange, thick] (second_stage_estimation_rmconj_dta) to (rmconj_do);
-    \draw[->, orange, thick] (second_stage_estimation_rmconj_do) to (second_stage_estimation_do);
 
 \end{tikzpicture}
 
