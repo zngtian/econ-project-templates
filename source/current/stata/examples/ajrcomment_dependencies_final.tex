@@ -18,16 +18,6 @@
 }]
 
 
-    \node (baseline_do) [fill=blue!15, shift={(7, 0)}]
-    {
-        baseline.do
-    };
-    \node (rmconj_do) [fill=blue!15, shift={(9, 0)}]
-    {
-        rmconj.do
-    };
-
-
 
     \node (second_stage_estimation_baseline_dta) [shift={(9, -4)}]
     {
@@ -55,8 +45,6 @@
 
 
     \draw[->, teal, thick] (table3_second_stage_est_tex) to (table3_second_stage_est_do);
-    \draw[->, teal, thick] (table3_second_stage_est_tex) to (baseline_do);
-    \draw[->, teal, thick] (table3_second_stage_est_tex) to (rmconj_do);
     \draw[->, teal, thick] (table3_second_stage_est_tex) to (second_stage_estimation_baseline_dta);
     \draw[->, teal, thick] (table3_second_stage_est_tex) to (second_stage_estimation_rmconj_dta);
 
