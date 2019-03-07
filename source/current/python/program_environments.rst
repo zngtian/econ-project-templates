@@ -6,52 +6,29 @@ Project-specific Program Environments
 
 Progams change. Nothing is as frustrating as coming back to a project after a long time and spending the first {hours, days} updating your code to work with a new version of your favourite data analysis library. The same holds for debugging errors that occur only because your coauthor uses a slightly different setup.
 
-The solution is to have isolated environments on a per-project basis. `Conda environments <http://conda.pydata.org/docs/using/envs.html>`_ allow you to do precisely this. This page describes them a little bit and explains the scripts that come as part of the templates in order to install them in an automated way.
+The solution is to have isolated environments on a per-project basis. `Conda environments <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>`_ allow you to do precisely this. This page describes them a little bit and explains their use.
 
-
-Setting up a new environment
-============================
-
-The templates come with a script which handles creating, activating and updating of environments. After cloning and changing to the project directory, you can run
-
-**(Mac, Linux)**
-
-.. code:: console
-
-    $ source set-env.sh
-
-or **(Windows)**
-
-.. code:: console
-
-    $ set-env.bat
-
-in your shell to create a new environment with the same name as your project folder.
-
-The script will look at the *.environment.[OS].yml* file, where 'OS' is your current operating system :math:`\in\;\{\text{linux, osx, windows}\}` , for conda and pip packages and install those in the newly created Python environment. 
+The following commands can either be executed in a terminal or the Anaconda prompt (Windows).
 
 
 Using the environment
 =====================
 
-Every time you go back to the project, activate the project in the same way before running Waf. That is, go to the project root directory, run:
+In the installation process of the template a new environment was created if it was not explicitly declined. It took its specification from the environment.yml file in your projects root folder.
 
-**(Mac, Linux)**
-
-.. code:: console
-
-    $ source set-env.sh
-
-or **(Windows)**
+To activate it, execute:
 
 .. code:: console
 
-    $ set-env.bat
+    $ conda activate <env_name>
+
+Repeat this step every time you want to run your project from a new terminal window.
+
 
 Updating packages
 =================
 
-Make sure you activated the environment by ``source set-env.sh`` / ``set-env.bat``. Then use conda or pip directly: 
+Make sure you activated the environment by ``conda activate <env_name>``. Then use conda or pip directly:
 
 ``conda update [package]`` or ``pip install -U [package]``
 
@@ -87,27 +64,29 @@ Generally it is recommended to use *conda* whenever possible (necessary for most
 Saving your environment
 =======================
 
-After updating or changing your environment you should save the status in the respective *.environment.OS.yml* file to avoid version conflicts and maintain coherent environments in a project with multiple collaborators. Just make sure your environment is activated and run the following in the project's root directory:
-
-**(Linux)**
+After updating or changing your environment you should save the status in the *environment.yml* file to avoid version conflicts and maintain coherent environments in a project with multiple collaborators. Just make sure your environment is activated and run the following in the project's root directory:
 
 .. code:: console
 
-    $ conda env export -f .environment.linux.yml
-
-**(Mac)**
-
-.. code:: console
-
-    $ conda env export -f .environment.osx.yml
-
-**(Windows)**
-
-.. code:: console
-
-    $ conda env export -f .environment.windows.yml
+    $ conda env export -f environment.yml
 
 After exporting, manually delete the last line in the environment file, as it is system specific.
+
+
+Setting up a new environment
+============================
+
+If you want to create a clean environment, execute:
+
+.. code:: console
+
+    $ conda create --name myenv
+
+For setting up an environment from a specification file (like environment.yml), type:
+
+.. code:: console
+
+    $ conda create --name <myenv> -f <filename>
 
 
 Information about your conda environments
